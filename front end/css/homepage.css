@@ -1,0 +1,160 @@
+/*google fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+*{
+ font-family: "Michroma", sans-serif;
+ margin: 0;
+ padding: 0;
+ scroll-padding-top: 1rem;
+ scroll-behavior: smooth;
+ list-style: none;
+ text-decoration: none;
+ box-sizing: border-box;
+}
+:root{
+    --main-color:#663399;
+    --text-color:#FFEFD5;
+    --bg-color:#696969;
+}
+section{
+    padding: 4rem 0 2rem;
+}
+img{
+    width:100%;
+}
+body{
+    color: var(--text-color);
+}
+.container{
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+header{
+    display: block;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+.nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 35px;
+}
+#menu-icon{
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-color);
+    display: none;
+}
+.logo{
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-color);
+}
+.logo span{
+    color: var(--main-color);
+}
+.navbar{
+    display: flex;
+    column-gap: 2rem;
+}
+.navbar a{
+    color: var(--text-color);
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.navbar a:hover,
+.navbar a.active{
+    color: var(--main-color);
+    border-bottom: 3px solid var(--main-color);
+}
+#search-icon{
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-color);
+   
+}
+.search-box{
+    position: absolute;
+    top: 110%;
+    right: 0;
+    left: 0;
+    background: var(--bg-color);
+    box-shadow: 4px 4px 20px rgb(15 54 55 / 10%);
+    border: 1px solid var(--main-color);
+    border-radius: 0.5rem;
+    clip-path: circle(0% at 100% 0%);
+}
+.search-box.active{
+    clip-path: circle(144% at 100% 0%);
+    transition: 0.5s;
+}
+.search-box input{
+    width: 100%;
+    padding: 8px;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 1rem;
+}
+.home{
+    max-width: 1300px;
+    margin: auto;
+    width: 100%;
+    min-height: 640px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: url(https://images.hdqwalls.com/download/matt-black-bmw-m3-competition-gh-2880x1800.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center left;
+    color: var(--text-color);
+    text-align: center;
+    padding: 0 20px;
+}
+.home-text{
+    padding-left: 40px;
+    padding-right: 40px;
+    max-width: 600px;
+    position: relative;
+}
+.home-text h1{
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+.home-text h1 span{
+    color: var(--main-color);
+}
+.home-text p{
+    font-size: 0.938rem;
+    font-weight: 300;
+    margin: 0.5rem 0 1.2rem;
+    color: var(--text-color);
+}
+.btn{
+    display: inline-block;
+    padding: 0.3rem 0.5rem;
+    background: var(--main-color);
+    color: var(--text-color);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    transition: 0.7s;
+    border: 1px solid transparent;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.btn:hover{
+    background: transparent;
+    color: var(--main-color);
+    border: 1px solid var(--main-color);
+    transition: 0.9s;
+}
