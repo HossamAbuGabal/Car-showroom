@@ -365,9 +365,9 @@ header{
   padding: 0 20px;
 }
 
-.product-image {
+.product-tile { /*For general product page*/
   width: 100%;
-  height: 300px; /* larger image tiles */
+  height: 300px; /* larger tiles */
   background-color: #333;
   background-size: cover;
   background-position: center;
@@ -407,4 +407,203 @@ header{
   font-size: 0.9rem;
   border: none;
   border-radius: 8px;
+}
+
+/*//////////////////////////////////////////*/
+
+/* Product Detail Page - Simple Static Layout */
+.product-detail-section {
+    padding: 6rem 0 4rem;
+    background-color: #111;
+    color: var(--text-color);
+}
+
+.product-detail-container {
+    display: flex;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+    gap: 3rem;
+}
+
+.product-image-container {
+    width: 55%;
+}
+
+.product-image {
+    width: 100%;
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+}
+
+.product-info-container {
+    width: 45%;
+    padding-top: 1rem;
+}
+
+.product-title {
+    font-size: 2.2rem;
+    color: var(--main-color);
+    margin-bottom: 1.8rem;
+    font-weight: 700;
+}
+
+.product-specs {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-bottom: 2.5rem;
+}
+
+.spec-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.spec-label {
+    font-size: 1rem;
+    color: #aaa;
+    min-width: 120px;
+}
+
+.spec-value {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #fff;
+}
+
+.product-description {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #bbb;
+    margin-bottom: 2.5rem;
+}
+
+.product-price-container {
+    margin-bottom: 2.5rem;
+}
+
+.price {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #fff;
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.price-note {
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+.product-cta {
+    background-color: var(--main-color);
+    color: var(--text-color);
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 250px;
+}
+
+.product-cta:hover {
+    background-color: #7d48b1;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .product-detail-container {
+        flex-direction: column;
+    }
+    
+    .product-image-container,
+    .product-info-container {
+        width: 100%;
+    }
+    
+    .product-image {
+        height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-title {
+        font-size: 2rem;
+    }
+    
+    .product-cta {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* Similar Cars Section */
+.similar-cars-section {
+    padding: 3rem 20px;
+    background-color: #0a0a0a;
+    border-top: 1px solid #222;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    color: var(--main-color);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.similar-cars-container {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.similar-car-tile {
+    flex: 1;
+    max-width: 350px;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.similar-car-tile:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.similar-car-image {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.similar-car-name {
+    padding: 1rem;
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .similar-cars-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .similar-car-tile {
+        width: 100%;
+        max-width: 400px;
+    }
 }
