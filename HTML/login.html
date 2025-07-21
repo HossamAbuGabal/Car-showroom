@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CarLuck - Login</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+  <!-- Custom Styles -->
+   <link rel="stylesheet" href="../css/login.css" />
+</head>
+<body>
+
+  <div class="container">
+    <!-- Tabs -->
+    <div class="tabs">
+      <button id="loginTab" class="active">Login</button>
+      <button id="signupTab">Signup</button>
+    </div>
+
+    <!-- Login Form -->
+    <form id="loginForm" class="form" onsubmit="event.preventDefault(); window.location.href='homepage.html';">
+      <label>Email</label>
+      <input type="email" placeholder="you@example.com" required>
+      <label>Password</label>
+      <input type="password" placeholder="••••••••" required>
+      <button type="submit">Login</button>
+    </form>
+
+    <!-- Signup Form -->
+    <form id="signupForm" class="form hidden">
+      <label>Username</label>
+      <input type="text" placeholder="Your name" required>
+      <label>Email</label>
+      <input type="email" placeholder="you@example.com" required>
+      <label>Password</label>
+      <input type="password" placeholder="Create a password" required>
+      <button type="submit">Signup</button>
+    </form>
+  </div>
+
+  <!-- JS Logic -->
+  <script src="../js/login.js"></script>
+</body>
+</html>

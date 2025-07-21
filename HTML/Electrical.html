@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CarLuck - Parts</title>
+  <link rel="stylesheet" href="../css/homepage.css">
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+   <header id="main-header">
+
+        <div class="nav container">
+            <i class='bx bx-menu' id="menu-icon"></i>
+            <a href="#" class="logo">Car<span>Luck</span></a>
+            <ul class="navbar">
+                <li><a href="#home">Home</a></li>
+                <li><a href="vehicles.html">Vehicles</a></li>
+                <li><a href="Parts.html">Parts</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <i class='bx bx-search' id="search-icon"></i>
+                <div id="profile-section">
+                    </div>
+            </div>
+        </div>
+        <div class="search-box container">
+            <input type="search" name="" placeholder="Search...">
+        </div>
+    </header>
+    
+     <script>
+    let lastScrollTop = 0;
+    const header = document.getElementById("main-header");
+
+    window.addEventListener("scroll", function() {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrollTop > lastScrollTop) {
+            // Scrolling down
+            header.style.top = "-100px";
+        } else {
+            // Scrolling up
+            header.style.top = "0";
+        }
+
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    });
+</script>
+  
+
+  <section class="products-section">
+    <h2>Car Parts & Accessories</h2>
+    <div class="products-container">
+      <div class="product-card">
+        <div class="product-tile" style="background-image: url('https://www.eurekaafricablog.com/wp-content/uploads/2017/12/car-engine-1024x681.jpg'); height: 200px;"></div>
+        <div class="product-content">
+          <h3 class="product-title">Engine Management System</h3>
+          <p class="product-description">It optimizes performance, fuel efficiency, and emissions by managing the fuel injection, ignition timing, and other vital functions.</p>
+          <p class="product-price">$750</p>
+          <a href="#" class="product-btn">View Details</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-tile" style="background-image: url('https://res.cloudinary.com/yourmechanic/image/upload/dpr_auto,f_auto,q_auto/v1/article_images/alternator'); height: 200px;"></div>
+        <div class="product-content">
+          <h3 class="product-title">Alternator</h3>
+          <p class="product-description">Generates electricity to charge the battery and power the car's electrical systems while the engine is running.</p>
+          <p class="product-price">$350</p>
+          <a href="#" class="product-btn">View Details</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-tile" style="background-image: url('data:image/jpeg;base64,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OE8cgjkAdGRRppWhpajuF+Ci42LADdS1VZHM862uGxqDz4fkrVajFERFQREQEREBERAREQEREBERAXxfUQeHBQ8XC1woQCORU4hYZmoNMxuGDJABsRYHgb7KUzEuA0vAe3k6/oV97QRllHgF1CbWqa8BW1VR5hiJX6Dhn2BOvSRr8AOXGtPBRpaSZex94n6T8j9vJ36qE+F7DSRtOuxUfKjizLSSpi0m76atVqaTvz3sr9sh2sW8jcf7eSgr8NOW/C6g5G4/2VxgswPTpsq+bBMd8J92eRu2vXcfVfMNBIwjW23MEFp6EbqNNpbirbVWGSUmpPDYKNhWkr1iq6XAUrSgN6FExgy0F8pfSrW28zupeeZo2CCSU3LW2bWlXbNHmaKsg/C0tc0gUGitHU47bqP2hyqXFiOEHS1sjXPDgSHNbX4j1ofEtCl3Lgl9gXTPw5lnNXyPcRwAbU6QBypRbMseHhDGhrRQAUCyLcmRgREVBERAREQEREBERAREQEREBERAXwhfUQVWd4TVGabih9N1rWDgax5LWCpsaio6+B8VvSr58pYTVpLeY3HpwUsWVUk27rGDy/3RrXfwf0NKszlQ+Y+i+jLR8x+n6LOVdiDG0/w/6bFnaTShIA42aAetApP7COZ+n6L7+wDiT6/orlNjC2g6eG5X33DnUrYclKZhGi9PUkrOGKyJawww0UgBAF9VQREQEREBERAREQEREBERAREQEREBERAREQEREBKIiD5RfURAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREH/2Q=='); height: 200px;"></div>
+        <div class="product-content">
+          <h3 class="product-title">Starter Motor</h3>
+          <p class="product-description">Starts the engine rotation on the vehicle.</p>
+          <p class="product-price">$220</p>
+          <a href="#" class="product-btn">View Details</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-tile" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTe4GHtDmlIQ7dZgkodIPZ6f2_3goSq_MOSHg&s'); height: 200px;"></div>
+        <div class="product-content">
+          <h3 class="product-title">Ignition</h3>
+          <p class="product-description">Connects the circuit that provides voltage to your starter motor, allowing the engine to crank over and the engine to eventually start.</p>
+          <p class="product-price">$105</p>
+          <a href="#" class="product-btn">View Details</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section logo-section">
+        <h2 class="footer-logo">Car<span>Luck</span></h2>
+        <p>Your trusted destination for premium cars and parts.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">FAQs</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p>Email: support@carluck.com</p>
+        <p>Phone: +1 (555) 123-4567</p>
+        <p>Location: 123 Auto Drive, Motor City</p>
+      </div>
+      <div class="footer-social">
+        <a href="#"><i class='bx bxl-facebook'></i></a>
+        <a href="#"><i class='bx bxl-instagram'></i></a>
+        <a href="#"><i class='bx bxl-twitter'></i></a>
+        <a href="#"><i class='bx bxl-linkedin'></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 CarLuck. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../js/homepage.js"></script>
+</body>
+</html>
