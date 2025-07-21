@@ -8,69 +8,111 @@
   <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100">
-   <header>
-        <!-- Nav container -->
+   <header id="main-header">
+
         <div class="nav container">
-            <!-- Menu icon -->
             <i class='bx bx-menu' id="menu-icon"></i>
-            <!-- Logo -->
             <a href="#" class="logo">Car<span>Luck</span></a>
-            <!-- Nav list -->
             <ul class="navbar">
-                <li><a href="homepage.html">Home</a></li>
+                <li><a href="#home">Home</a></li>
                 <li><a href="vehicles.html">Vehicles</a></li>
                 <li><a href="Parts.html">Parts</a></li>
-                <li><a href="homepage.html">About</a></li>
-                <li><a href="#homepage.html">Contact</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-            <!-- Nav icons -->
             <div class="nav-icons">
                 <i class='bx bx-search' id="search-icon"></i>
-                <a href="login.html" target="_self" class="profile-icon">
-    <i class='bx bxs-user-circle text-2xl text-gray-700 hover:text-blue-500 transition'></i>
-</a>
-
+                <div id="profile-section">
+                    </div>
             </div>
         </div>
-        <!-- Search box -->
         <div class="search-box container">
             <input type="search" name="" placeholder="Search...">
         </div>
     </header>
-  
+    
+     <script>
+    let lastScrollTop = 0;
+    const header = document.getElementById("main-header");
+
+    window.addEventListener("scroll", function() {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrollTop > lastScrollTop) {
+            // Scrolling down
+            header.style.top = "-100px";
+        } else {
+            // Scrolling up
+            header.style.top = "0";
+        }
+
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    });
+</script>
 
   <section class="products-section">
     <h2>Car Parts & Accessories</h2>
     <div class="products-container">
       <div class="product-card">
-        <div class="product-tile" style="background-image: url('../images/brake-pads.jpg'); height: 200px;"></div>
+        <div class="product-tile" style="background-image: url('https://carfromjapan.com/wp-content/uploads/2017/11/1-1.jpg'); height: 200px;"></div>
         <div class="product-content">
-          <h3 class="product-title">Ceramic Brake Pads</h3>
-          <p class="product-description">High-performance ceramic brake pads for longer life and quiet braking.</p>
-          <p class="product-price">$120</p>
-          <a href="#" class="product-btn">View Details</a>
+          <h3 class="product-title">Engine</h3>
+          <p class="product-description">Timing Belt, Water Pumps, Exhausts and, Gaskets.</p>
+          <p class="product-price"></p>
+          <a href="Engine.html" class="product-btn">Show All</a>
         </div>
       </div>
 
       <div class="product-card">
-        <div class="product-tile" style="background-image: url('../images/performance-tire.jpg'); height: 200px;"></div>
+        <div class="product-tile" style="background-image: url('https://3.imimg.com/data3/VQ/KJ/MY-3063994/auto-electrical-parts-500x500.jpg'); height: 200px;"></div>
         <div class="product-content">
-          <h3 class="product-title">Performance Tire</h3>
-          <p class="product-description">All-season ultra-grip tires perfect for sports and off-road conditions.</p>
-          <p class="product-price">$210</p>
-          <a href="#" class="product-btn">Add to Cart</a>
+          <h3 class="product-title">Electrical</h3>
+          <p class="product-description">Engine Management, Alternators, Starter Motors and, Ignition.</p>
+          <p class="product-price"></p>
+          <a href="Electrical.html" class="product-btn">Show All</a>
         </div>
       </div>
 
       <div class="product-card">
-        <div class="product-tile" style="background-image: url('../images/spark-plugs.jpg'); height: 200px;"></div>
+        <div class="product-tile" style="background-image: url('https://mcprod.gsfcarparts.com/media/catalog/category/service-parts-800px.jpg'); height: 200px;"></div>
         <div class="product-content">
-          <h3 class="product-title">Platinum Spark Plugs</h3>
-          <p class="product-description">Boost ignition performance and engine longevity with platinum plugs.</p>
-          <p class="product-price">$45</p>
-          <a href="#" class="product-btn">Add to Cart</a>
+          <h3 class="product-title">Service Parts</h3>
+          <p class="product-description">Filters, Spark/Glow Plugs, Belts and, Engine Oil.</p>
+          <p class="product-price"></p>
+          <a href="Service-Parts.html" class="product-btn">Show All</a>
         </div>
       </div>
+
+      <div class="product-card">
+        <div class="product-tile" style="background-image: url('https://5.imimg.com/data5/CE/SW/XS/SELLER-89786929/automotive-brake-parts.jpg'); height: 200px;"></div>
+        <div class="product-content">
+          <h3 class="product-title">Braking</h3>
+          <p class="product-description">Pads, Discs, Wheel Cylinders and, Cables.</p>
+          <p class="product-price"></p>
+          <a href="Braking.html" class="product-btn">Show All</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-tile" style="background-image: url('https://westcanauto.com/wp-content/uploads/2023/06/cp032195-automatic-transmission-parts-clutch-baskets-gears-00-05-vw-jetta-golf-mk4-beetle.jpg'); height: 200px;"></div>
+        <div class="product-content">
+          <h3 class="product-title">Transmission</h3>
+          <p class="product-description">Wheel Bearings, CV Joints/Boots, Clutches and, Drive Shafts.</p>
+          <p class="product-price"></p>
+          <a href="Transmission.html" class="product-btn">Show All</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-tile" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwGuEkkSlJBpGpzsXXSKQos3FVxS2c-AaOTw&s'); height: 200px;"></div>
+        <div class="product-content">
+          <h3 class="product-title">Suspension</h3>
+          <p class="product-description">Coil Springs, Wishbones, Links and, Shock Absorbers.</p>
+          <p class="product-price"></p>
+          <a href="Suspension.html" class="product-btn">Show All</a>
+        </div>
+      </div>
+
     </div>
   </section>
 

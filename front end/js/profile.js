@@ -1,9 +1,9 @@
-console.log("JS Loaded successfully");
+console.log("JS Loaded ✅");
 
 function saveProfile() {
   const profile = {
-    name: "name",
-    email: "name@example.com",
+    name: "John Doe",
+    email: "john@example.com",
     favorites: [],
     wishlist: [],
   };

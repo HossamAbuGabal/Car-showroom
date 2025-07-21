@@ -607,3 +607,22 @@ header{
         max-width: 400px;
     }
 }
+/*highliting*/
+.highlight {
+  background-color: rgb(226, 71, 187);
+  font-weight: bold;
+}
+/*error no result*/
+.no-results {
+  color: rgb(218, 3, 3);
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+#main-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    transition: top 0.3s ease;
+}

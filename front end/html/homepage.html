@@ -62,7 +62,8 @@
     </style>
 </head>
 <body class="bg-gray-100">
-    <header>
+    <header id="main-header">
+
         <div class="nav container">
             <i class='bx bx-menu' id="menu-icon"></i>
             <a href="#" class="logo">Car<span>Luck</span></a>
@@ -83,7 +84,26 @@
             <input type="search" name="" placeholder="Search...">
         </div>
     </header>
-    
+
+     <script>
+    let lastScrollTop = 0;
+    const header = document.getElementById("main-header");
+
+    window.addEventListener("scroll", function() {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrollTop > lastScrollTop) {
+            // Scrolling down
+            header.style.top = "-100px";
+        } else {
+            // Scrolling up
+            header.style.top = "0";
+        }
+
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    });
+</script>
+
     <section class="home" id="home">
         <div class="home-text">
             <h1>Welcome To The World <br>Of Your <span>Dream Ride...</span></h1>
@@ -226,5 +246,5 @@
         }
 
     </script>
-</body>
+    </body>
 </html>
