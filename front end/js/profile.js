@@ -56,3 +56,54 @@ function displayList(id, items) {
     container.appendChild(li);
   });
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+  const isLoggedIn = localStorage.getItem('isLoggedIn');
+  const profileSection = document.getElementById('profile-section');
+
+  if (profileSection) {
+    if (isLoggedIn === 'true') {
+      const userProfile = JSON.parse(localStorage.getItem('userProfile'));
+      let profileName = 'User';
+      if(userProfile && userProfile.name) {
+        profileName = userProfile.name;
+      }
+      profileSection.innerHTML = `
+        <div class="profile-dropdown">
+          <i class='bx bxs-user-circle profile-icon' style="font-size: 28px; color: var(--text-color);"></i>
+          <div class="profile-dropdown-content">
+            <div><strong>Welcome, ${profileName}!</strong></div>
+            <div class="divider"></div>
+            <a href="profile.html">View Profile</a>
+            <a href="favorites.html">Favorites</a>
+            <a href="#" onclick="showWishlist()">Wishlist</a>
+            <div class="divider"></div>
+            <a href="#" onclick="logout()">Logout</a>
+          </div>
+        </div>
+      `;
+    } else {
+      profileSection.innerHTML = `
+        <a href="login.html" target="_self" class="profile-icon">
+          <i class='bx bxs-user-circle' style="font-size: 28px; color: var(--text-color);"></i>
+        </a>
+      `;
+    }
+  }
+});
+
+function showWishlist() {
+  const profile = JSON.parse(localStorage.getItem("userProfile"));
+  if (profile && profile.wishlist.length > 0) {
+    alert("Your Wishlist:\n" + profile.wishlist.join("\n"));
+  } else {
+    alert("Your wishlist is empty.");
+  }
+}
+
+function logout() {
+  localStorage.removeItem('isLoggedIn');
+  localStorage.removeItem('userProfile');
+  alert("You have been logged out.");
+  window.location.href = 'homepage.html';
+}

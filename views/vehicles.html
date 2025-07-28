@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CarLuck - All Vehicles</title>
+  <link rel="stylesheet" href="../css/homepage.css" />
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <style>
+    .vehicle-grid { display: flex; flex-wrap: wrap; gap: 2rem; padding: 2rem; justify-content: center; }
+    .product-card { background: #222; border-radius: 10px; overflow: hidden; width: 320px; box-shadow: 0 2px 8px #0008; }
+    .product-tile { height: 180px; background-size: cover; background-position: center; }
+    .product-content { padding: 1rem; }
+    .product-title { font-size: 1.3rem; margin-bottom: .5rem; }
+    .product-description { font-size: .95rem; color: #bbb; }
+    .product-price { font-weight: bold; color: #a259ff; margin-bottom: .5rem; }
+    .product-btn { background: var(--main-color); color: #fff; border: none; padding: .5rem 1rem; border-radius: 4px; cursor: pointer; text-decoration: none; display: inline-block; }
+    .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100vw; height: 100vh; overflow: auto; background: rgba(0,0,0,.75); }
+    .modal-content { background: #222; margin: 5% auto; padding: 2rem; border-radius: 10px; max-width: 600px; color: var(--text-color); position: relative; }
+    .close { position: absolute; top: 15px; right: 25px; color: #fff; font-size: 2rem; cursor: pointer; }
+    @media (max-width: 700px) {
+      .vehicle-grid { flex-direction: column; align-items: center; }
+      .product-card { width: 95vw; }
+      .modal-content { max-width: 95vw; }
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+
+<header id="main-header">
+  <div class="nav container">
+    <i class='bx bx-menu' id="menu-icon"></i>
+    <a href="homepage.html" class="logo">Car<span>Luck</span></a>
+    <ul class="navbar">
+      <li><a href="homepage.html">Home</a></li>
+      <li><a href="all-vehicles.html" class="active">Vehicles</a></li>
+      <li><a href="Parts.html">Parts</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-icons">
+      <i class='bx bx-search' id="search-icon"></i>
+      <div id="profile-section"></div>
+    </div>
+  </div>
+  <div class="search-box container">
+    <input type="search" name="" placeholder="Search...">
+  </div>
+</header>
+
+<main>
+  <section class="products-section">
+
+    <!-- Audi RS5 -->
+    <div class="product-card">
+      <div class="product-tile" style="background-image: url('https://tflcar.com/wp-content/uploads/2024/07/Audi-RS5-featured-3.webp');"></div>
+      <div class="product-content">
+        <h3 class="product-title">Audi RS5</h3>
+        <p class="product-description">Everyday usability meets thrilling performance. Quattro all-wheel drive, twin-turbo V6, precise handling.</p>
+        <p class="product-price">$76,000</p>
+        <button class="product-btn" onclick="openModal('modal-audi')">View Details</button>
+      </div>
+    </div>
+    <div id="modal-audi" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('modal-audi')">&times;</span>
+        <!-- Paste exact details from audi-rs5.html below -->
+        <h2>Audi RS5</h2>
+        <img src="https://tflcar.com/wp-content/uploads/2024/07/Audi-RS5-featured-3.webp" style="width:100%;border-radius:6px;margin-bottom:1rem;">
+        <p>The Audi RS5 combines everyday usability with thrilling performance. Featuring Quattro all-wheel drive and a sonorous twin-turbo V6, it delivers precise handling and exhilarating acceleration in all conditions.</p>
+        <ul>
+          <li>Engine: Twin-turbo V6</li>
+          <li>Horsepower: 444hp</li>
+          <li>Drivetrain: Quattro AWD</li>
+        </ul>
+        <p>Price: $76,000 + Tax & Fees</p>
+      </div>
+    </div>
+
+    <!-- BMW M4 G83 -->
+    <div class="product-card">
+      <div class="product-tile" style="background-image: url('https://cdn.sanity.io/images/c8ihu5xk/production/100bcaddbbb1083cea32083201ddccfdbead8b0d-5304x3978.jpg');"></div>
+      <div class="product-content">
+        <h3 class="product-title">BMW M4 G83</h3>
+        <p class="product-description">Luxury sports coupe with 503 horsepower and razor-sharp handling.</p>
+        <p class="product-price">$84,000</p>
+        <button class="product-btn" onclick="openModal('modal-bmw')">View Details</button>
+      </div>
+    </div>
+    <div id="modal-bmw" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('modal-bmw')">&times;</span>
+        <!-- Paste exact details from BMWM4G83.html below -->
+        <h2>BMW M4 G83</h2>
+        <img src="https://cdn.sanity.io/images/c8ihu5xk/production/100bcaddbbb1083cea32083201ddccfdbead8b0d-5304x3978.jpg" style="width:100%;border-radius:6px;margin-bottom:1rem;">
+        <ul>
+          <li>Engine: Twin-turbo inline-6</li>
+          <li>Horsepower: 503hp</li>
+          <li>Drivetrain: Rear-wheel drive</li>
+        </ul>
+        <p>Description: The BMW M4 G83 offers a thrilling drive, with 503 horsepower and advanced performance tech.</p>
+        <p>Price: $84,000</p>
+      </div>
+    </div>
+
+    <!-- Cadillac Escalade -->
+    <div class="product-card">
+      <div class="product-tile" style="background-image: url('https://dealerinspire-image-library-prod.s3.us-east-1.amazonaws.com/images/pmTYRYjsobaCrcW8blbOJCsS9jVBmmiAcmqZ7irW.jpg');"></div>
+      <div class="product-content">
+        <h3 class="product-title">Cadillac Escalade</h3>
+        <p class="product-description">Luxurious full-size SUV packed with tech, space, and bold styling.</p>
+        <p class="product-price">$96,000</p>
+        <button class="product-btn" onclick="openModal('modal-cadillac')">View Details</button>
+      </div>
+    </div>
+    <div id="modal-cadillac" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('modal-cadillac')">&times;</span>
+        <!-- Paste exact details from cadillac-escalade.html below -->
+        <h2>Cadillac Escalade</h2>
+        <img src="https://dealerinspire-image-library-prod.s3.us-east-1.amazonaws.com/images/pmTYRYjsobaCrcW8blbOJCsS9jVBmmiAcmqZ7irW.jpg" style="width:100%;border-radius:6px;margin-bottom:1rem;">
+        <ul>
+          <li>Engine: 6.2L V8</li>
+          <li>Horsepower: 420hp</li>
+          <li>Drivetrain: 4WD</li>
+        </ul>
+        <p>Experience the pinnacle of luxury SUVs with advanced tech and premium comfort.</p>
+        <p>Price: $96,000</p>
+      </div>
+    </div>
+
+    <!-- Corvette C7 ZR1 -->
+    <div class="product-card">
+      <div class="product-tile" style="background-image: url('https://moderncarcollector.com/wp-content/uploads/2024/07/zr1-1496.jpg');"></div>
+      <div class="product-content">
+        <h3 class="product-title">Corvette C7 ZR1</h3>
+        <p class="product-description">755-horsepower American supercar with aggressive styling and speed.</p>
+        <p class="product-price">$130,000</p>
+        <button class="product-btn" onclick="openModal('modal-corvette')">View Details</button>
+      </div>
+    </div>
+    <div id="modal-corvette" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('modal-corvette')">&times;</span>
+        <!-- Paste exact details from corvette.html below -->
+        <h2>Corvette C7 ZR1</h2>
+        <img src="https://moderncarcollector.com/wp-content/uploads/2024/07/zr1-1496.jpg" style="width:100%;border-radius:6px;margin-bottom:1rem;">
+        <ul>
+          <li>Engine: Supercharged V8</li>
+          <li>Horsepower: 755hp</li>
+          <li>Drivetrain: Rear-wheel drive</li>
+        </ul>
+        <p>The Corvette C7 ZR1 represents the pinnacle of American supercar performance. With its supercharged V8 producing 755 horsepower and aggressive aerodynamic package, it delivers track-ready performance with classic Corvette styling.</p>
+        <p>Price: $130,000 + Tax & Fees</p>
+      </div>
+    </div>
+
+    <!-- Dodge RAM -->
+    <div class="product-card">
+      <div class="product-tile" style="background-image: url('https://media.ed.edmunds-media.com/ram/1500/2023/oem/2023_ram_1500_crew-cab-pickup_big-horn_fq_oem_1_1600.jpg');"></div>
+      <div class="product-content">
+        <h3 class="product-title">Dodge RAM</h3>
+        <p class="product-description">Rugged full-size pickup with exceptional towing capacity and comfort.</p>
+        <p class="product-price">$58,000</p>
+        <button class="product-btn" onclick="openModal('modal-ram')">View Details</button>
+      </div>
+    </div>
+    <div id="modal-ram" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('modal-ram')">&times;</span>
+        <!-- Paste exact details from dodge-ram.html below -->
+        <h2>Dodge RAM</h2>
+        <img src="https://media.ed.edmunds-media.com/ram/1500/2023/oem/2023_ram_1500_crew-cab-pickup_big-horn_fq_oem_1_1600.jpg" style="width:100%;border-radius:6px;margin-bottom:1rem;">
+        <ul>
+          <li>Engine: 5.7L HEMI V8</li>
+          <li>Horsepower: 395hp</li>
+          <li>Drivetrain: 4WD</li>
+        </ul>
+        <p>Built for strength and versatility, the RAM 1500 offers towing, hauling, and comfort.</p>
+        <p>Price: $58,000</p>
+      </div>
+    </div>
+
+    <!-- Ford Raptor -->
+    <div class="product-card">
+      <div class="product-tile" style="background-image: url('https://limitedslipblog.com/wp-content/uploads/2022/02/2022-ford-raptor-1.jpg');"></div>
+      <div class="product-content">
+        <h3 class="product-title">Ford Raptor</h3>
+        <p class="product-description">High-performance off-road pickup with a powerful twin-turbo V6 engine.</p>
+        <p class="product-price">$78,000</p>
+        <button class="product-btn" onclick="openModal('modal-raptor')">View Details</button>
+      </div>
+    </div>
+    <div id="modal-raptor" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('modal-raptor')">&times;</span>
+        <!-- Paste exact details from ford-raptor.html below -->
+        <h2>Ford Raptor</h2>
+        <img src="https://limitedslipblog.com/wp-content/uploads/2022/02/2022-ford-raptor-1.jpg" style="width:100%;border-radius:6px;margin-bottom:1rem;">
+        <ul>
+          <li>Engine: Twin-turbo V6</li>
+          <li>Horsepower: 450hp</li>
+          <li>Drivetrain: 4WD</li>
+        </ul>
+        <p>Dominate any terrain with the Ford Raptor, engineered for off-road thrills and comfort.</p>
+        <p>Price: $78,000</p>
+      </div>
+    </div>
+
+    <!-- Mazda Miata MX-5 -->
+    <div class="product-card">
+      <div class="product-tile" style="background-image: url('https://di-uploads-pod40.dealerinspire.com/kennyrossmazda/uploads/2023/11/Kenny-Ross-Mazda-MX5.jpeg');"></div>
+      <div class="product-content">
+        <h3 class="product-title">Mazda Miata MX-5</h3>
+        <p class="product-description">Lightweight, rear-wheel drive roadster that's fun and fuel-efficient.</p>
+        <p class="product-price">$30,000</p>
+        <button class="product-btn" onclick="openModal('modal-miata')">View Details</button>
+      </div>
+    </div>
+    <div id="modal-miata" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('modal-miata')">&times;</span>
+        <!-- Paste exact details from mazda-miata.html below -->
+        <h2>Mazda Miata MX-5</h2>
+        <img src="https://di-uploads-pod40.dealerinspire.com/kennyrossmazda/uploads/2023/11/Kenny-Ross-Mazda-MX5.jpeg" style="width:100%;border-radius:6px;margin-bottom:1rem;">
+        <ul>
+          <li>Engine: 2.0L inline-4</li>
+          <li>Horsepower: 181hp</li>
+          <li>Drivetrain: Rear-wheel drive</li>
+        </ul>
+        <p>Enjoy the open road with the iconic Miata MX-5, known for its agility and fun driving experience.</p>
+        <p>Price: $30,000</p>
+      </div>
+    </div>
+
+    <!-- Nissan Patrol -->
+    <div class="product-card">
+      <div class="product-tile" style="background-image: url('https://carsguide-res.cloudinary.com/image/upload/f_auto,fl_lossy,q_auto,t_default/v1/editorial/segment_review/hero_image/2024-Nissan-Patrol-Warrior-Ti-SUV-Grey-MO-1001x565-(1).jpg');"></div>
+      <div class="product-content">
+        <h3 class="product-title">Nissan Patrol</h3>
+        <p class="product-description">Full-size SUV known for luxury and serious off-road capabilities.</p>
+        <p class="product-price">$92,000</p>
+        <button class="product-btn" onclick="openModal('modal-patrol')">View Details</button>
+      </div>
+    </div>
+    <div id="modal-patrol" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('modal-patrol')">&times;</span>
+        <!-- Paste exact details from nissan-patrol.html below -->
+        <h2>Nissan Patrol</h2>
+        <img src="https://carsguide-res.cloudinary.com/image/upload/f_auto,fl_lossy,q_auto,t_default/v1/editorial/segment_review/hero_image/2024-Nissan-Patrol-Warrior-Ti-SUV-Grey-MO-1001x565-(1).jpg" style="width:100%;border-radius:6px;margin-bottom:1rem;">
+        <ul>
+          <li>Engine: 5.6L V8</li>
+          <li>Horsepower: 400hp</li>
+          <li>Drivetrain: 4WD</li>
+        </ul>
+        <p>Take on any adventure with the Nissan Patrol—luxury, power, and off-road prowess in one package.</p>
+        <p>Price: $92,000</p>
+      </div>
+    </div>
+
+    <!-- Porsche GT3 RS -->
+    <div class="product-card">
+      <div class="product-tile" style="background-image: url('https://www.ilusso.com/wp-content/uploads/bottompagepic-9.jpg');"></div>
+      <div class="product-content">
+        <h3 class="product-title">Porsche GT3 RS</h3>
+        <p class="product-description">Track-ready performance car with a naturally aspirated 4.0L flat-six engine.</p>
+        <p class="product-price">$220,000</p>
+        <button class="product-btn" onclick="openModal('modal-gt3')">View Details</button>
+      </div>
+    </div>
+    <div id="modal-gt3" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('modal-gt3')">&times;</span>
+        <!-- Paste exact details from porsche-gt3.html below -->
+        <h2>Porsche GT3 RS</h2>
+        <img src="https://www.ilusso.com/wp-content/uploads/bottompagepic-9.jpg" style="width:100%;border-radius:6px;margin-bottom:1rem;">
+        <ul>
+          <li>Engine: 4.0L flat-six</li>
+          <li>Horsepower: 520hp</li>
+          <li>Drivetrain: Rear-wheel drive</li>
+        </ul>
+        <p>The Porsche GT3 RS is engineered for the racetrack, delivering precision, speed, and driving excitement.</p>
+        <p>Price: $220,000</p>
+      </div>
+    </div>
+
+    <!-- Skoda Octavia -->
+    <div class="product-card">
+      <div class="product-tile" style="background-image: url('https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg');"></div>
+      <div class="product-content">
+        <h3 class="product-title">Skoda Octavia</h3>
+        <p class="product-description">Reliable family sedan with comfort, efficiency, and modern features.</p>
+        <p class="product-price">$28,000</p>
+        <button class="product-btn" onclick="openModal('modal-skoda')">View Details</button>
+      </div>
+    </div>
+    <div id="modal-skoda" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('modal-skoda')">&times;</span>
+        <!-- Paste exact details from skoda-octavia.html below -->
+        <h2>Skoda Octavia</h2>
+        <img src="https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg" style="width:100%;border-radius:6px;margin-bottom:1rem;">
+        <ul>
+          <li>Engine: 1.4L TSI</li>
+          <li>Horsepower: 150hp</li>
+          <li>Drivetrain: FWD</li>
+        </ul>
+        <p>The Skoda Octavia is a practical, stylish, and efficient choice for families and commuters alike.</p>
+        <p>Price: $28,000</p>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<footer class="footer">
+  <section class="contact" id="contact">
+    <div class="footer-container">
+      <div class="footer-section logo-section">
+        <h2 class="footer-logo">Car<span>Luck</span></h2>
+        <p>Your trusted destination for premium cars and parts.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">FAQs</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p>Email: support@carluck.com</p>
+        <p>Phone: +1 (555) 123-4567</p>
+        <p>Location: 123 Auto Drive, Motor City</p>
+      </div>
+      <div class="footer-social">
+        <a href="#"><i class='bx bxl-facebook'></i></a>
+        <a href="#"><i class='bx bxl-instagram'></i></a>
+        <a href="#"><i class='bx bxl-twitter'></i></a>
+        <a href="#"><i class='bx bxl-linkedin'></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 CarLuck. All rights reserved.</p>
+    </div>
+  </section>
+</footer>
+
+<script>
+  function openModal(id) {
+    document.getElementById(id).style.display = "block";
+  }
+  function closeModal(id) {
+    document.getElementById(id).style.display = "none";
+  }
+  window.onclick = function(event) {
+    document.querySelectorAll('.modal').forEach(function(modal) {
+      if (event.target == modal) modal.style.display = "none";
+    });
+  }
+</script>
+<script src="../JS/profile-ui.js"></script>
+</body>
+</html>
