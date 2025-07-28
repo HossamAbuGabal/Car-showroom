@@ -626,3 +626,34 @@ header{
     z-index: 999;
     transition: top 0.3s ease;
 }
+/*favorite*/
+.product-card {
+  position: relative;
+}
+
+.favorite-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  font-size: 24px;
+  color: #bbb;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.favorite-icon.favorited i {
+  color: gold;
+}
+/*fix for the white area in empty pages*/
+.favorites-section {
+  background-color: #0d0d0d;
+  padding: 100px 0;
+  min-height: calc(100vh - 200px);
+  color: #f0e6d2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
