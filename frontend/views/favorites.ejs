@@ -4,10 +4,40 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CarLuck - Favorites</title>
-  <link rel="stylesheet" href="../css/homepage.css" />
+  <link rel="stylesheet" href="/css/homepage.css" />
   <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 </head>
 <body>
-    <%- include('partials/navbar') %>
+    <header id="main-header">
+        <div class="nav container">
+            <i class='bx bx-menu' id="menu-icon"></i>
+            <a href="/" class="logo">Car<span>Luck</span></a>
+            <ul class="navbar">
+                <li><a href="/">Home</a></li>
+                <li><a href="/vehicles">Vehicles</a></li>
+                <li><a href="/Parts">Parts</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/favorites">Favorites</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="favorites" id="favorites">
+        <div class="container">
+            <h2>Your Favorites</h2>
+            <div class="favorites-content">
+                <p>Your favorite vehicles and parts will appear here.</p>
+                <div class="empty-state">
+                    <i class='bx bx-heart'></i>
+                    <p>No favorites yet. Start exploring our vehicles and parts!</p>
+                    <a href="/vehicles" class="btn">Browse Vehicles</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="/js/homepage.js"></script>
+    <script src="/js/profile.js"></script>
 </body>
 </html>

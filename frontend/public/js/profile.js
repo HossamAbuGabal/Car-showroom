@@ -74,8 +74,8 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="profile-dropdown-content">
             <div><strong>Welcome, ${profileName}!</strong></div>
             <div class="divider"></div>
-            <a href="profile.html">View Profile</a>
-            <a href="favorites.html">Favorites</a>
+            <a href="/profile">View Profile</a>
+            <a href="/favorites">Favorites</a>
             <a href="#" onclick="showWishlist()">Wishlist</a>
             <div class="divider"></div>
             <a href="#" onclick="logout()">Logout</a>
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
       `;
     } else {
       profileSection.innerHTML = `
-        <a href="login.html" target="_self" class="profile-icon">
+        <a href="/login" class="profile-icon">
           <i class='bx bxs-user-circle' style="font-size: 28px; color: var(--text-color);"></i>
         </a>
       `;
@@ -105,5 +105,5 @@ function logout() {
   localStorage.removeItem('isLoggedIn');
   localStorage.removeItem('userProfile');
   alert("You have been logged out.");
-  window.location.href = 'homepage.html';
+  window.location.href = '/';
 }
