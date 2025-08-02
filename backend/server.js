@@ -3,6 +3,11 @@ const mongoose = require('mongoose');
 const express = require('express');
 const path = require('path');
 
+/***************************************************/
+//routes imports
+const homeRoutes = require("./routes/homepage");
+/***************************************************/
+
 const app = express();
 const uri = process.env.MONGODB_URI;
 
@@ -15,16 +20,13 @@ app.set('views', path.join(__dirname, '../frontend/views'));
 // Serve static files (CSS, JS, Images)
 app.use(express.static(path.join(__dirname, '../frontend/public')));
 
-// Routes
-app.get('/', (req, res) => {
-    res.render('homepage');  // <-- homepage.ejs will render
-});
+// Page Routes
+app.use('/', homeRoutes);
 
 // Example routes (you can add more)
 app.get('/vehicles', (req, res) => {
     res.render('vehicles');
 });
-
 app.get('/parts', (req, res) => {
     res.render('Parts');
 });
@@ -49,6 +51,8 @@ mongoose.connect(uri) //this tries to connect to your database by linking it usi
     });
 })
 .catch((err) => console.error('MongoDB Connection Error: ', err)); //if something goes wrong this catches the error and prints it in the terminal
+
+
 // Start server
 const PORT = 3000;
 app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
