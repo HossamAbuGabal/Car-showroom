@@ -31,9 +31,12 @@ router.get('/contact', (req, res) => {
 });
 
 //link number 5 for favorites
+
 router.get('/favorites', (req, res) => {
-    console.log("favorites route hit");
-    res.render('favorites');
+  const favorites = req.session.favorites || []; 
+  res.render('favorites', { favorites });
 });
 
 module.exports = router;
+
+

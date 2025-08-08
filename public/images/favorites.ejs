@@ -4,40 +4,83 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CarLuck - Favorites</title>
-  <link rel="stylesheet" href="/css/homepage.css" />
+  <link rel="stylesheet" href="../css/homepage.css" />
   <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 </head>
-<body>
-    <header id="main-header">
-        <div class="nav container">
-            <i class='bx bx-menu' id="menu-icon"></i>
-            <a href="/" class="logo">Car<span>Luck</span></a>
-            <ul class="navbar">
-                <li><a href="/">Home</a></li>
-                <li><a href="/vehicles">Vehicles</a></li>
-                <li><a href="/Parts">Parts</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/contact">Contact</a></li>
-                <li><a href="/favorites">Favorites</a></li>
-            </ul>
-        </div>
-    </header>
+<body class="bg-gray-100">
 
-    <section class="favorites" id="favorites">
-        <div class="container">
-            <h2>Your Favorites</h2>
-            <div class="favorites-content">
-                <p>Your favorite vehicles and parts will appear here.</p>
-                <div class="empty-state">
-                    <i class='bx bx-heart'></i>
-                    <p>No favorites yet. Start exploring our vehicles and parts!</p>
-                    <a href="/vehicles" class="btn">Browse Vehicles</a>
-                </div>
+  <header id="main-header">
+    <%- include('navbar.ejs') %>
+    <div class="search-box container">
+      <input type="search" name="" placeholder="Search...">
+    </div>
+  </header>
+
+  <section class="products-section">
+    <h2>Your Favorite Vehicles</h2>
+    <div class="products-container">
+      <% if (favorites && favorites.length > 0) { %>
+        <% favorites.forEach(function(car) { %>
+          <div class="product-card">
+            <div class="favorite-icon favorited"><i class='bx bxs-star'></i></div>
+            <div class="product-tile" style="background-image: url('<%= car.image %>');"></div>
+            <div class="product-content">
+              <h3 class="product-title"><%= car.title %></h3>
+              <p class="product-description"><%= car.description %></p>
+              <p class="product-price"><%= car.price %></p>
+              <a href="#" class="product-btn">View Details</a>
             </div>
+          </div>
+        <% }) %>
+      <% } else { %>
+        <div class="empty-state">
+          <i class='bx bx-heart'></i>
+          <p>No favorites yet. Start exploring our vehicles and parts!</p>
+          <a href="/vehicles" class="btn">Browse Vehicles</a>
         </div>
-    </section>
+      <% } %>
+    </div>
+  </section>
 
-    <script src="/js/homepage.js"></script>
-    <script src="/js/profile.js"></script>
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section logo-section">
+        <h2 class="footer-logo">Car<span>Luck</span></h2>
+        <p>Your trusted destination for premium cars and parts.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">FAQs</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p>Email: support@carluck.com</p>
+        <p>Phone: +1 (555) 123-4567</p>
+        <p>Location: 123 Auto Drive, Motor City</p>
+      </div>
+      <div class="footer-social">
+        <a href="#"><i class='bx bxl-facebook'></i></a>
+        <a href="#"><i class='bx bxl-instagram'></i></a>
+        <a href="#"><i class='bx bxl-twitter'></i></a>
+        <a href="#"><i class='bx bxl-linkedin'></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 CarLuck. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../js/homepage.js"></script>
 </body>
 </html>

@@ -200,5 +200,47 @@
   </footer>
 
   <script src="../js/homepage.js"></script>
+
+<script>
+document.querySelectorAll('.favorite-icon').forEach(function(icon, idx) {
+  const productCard = icon.closest('.product-card');
+  const carTitle = productCard.querySelector('.product-title').textContent;
+  const carPrice = productCard.querySelector('.product-price').textContent;
+  const carDescription = productCard.querySelector('.product-description').textContent;
+  const carImage = productCard.querySelector('.product-tile').style.backgroundImage.replace(/url\(['"]?(.*?)['"]?\)/, '$1');
+  const carData = { title: carTitle, price: carPrice, description: carDescription, image: carImage };
+
+  // Set initial state from localStorage
+  const carKey = 'favorite-' + idx;
+  if (localStorage.getItem(carKey) === 'true') {
+    icon.classList.add('favorited');
+    icon.querySelector('i').classList.replace('bx-star', 'bxs-star');
+  }
+
+  icon.addEventListener('click', function() {
+    icon.classList.toggle('favorited');
+    const isFav = icon.classList.contains('favorited');
+    localStorage.setItem(carKey, isFav);
+    if (isFav) {
+      icon.querySelector('i').classList.replace('bx-star', 'bxs-star');
+      // Send to backend
+      fetch('/favorites', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(carData)
+      });
+    } else {
+      icon.querySelector('i').classList.replace('bxs-star', 'bx-star');
+      // Remove from backend
+      fetch('/favorites', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title: carTitle })
+      });
+    }
+  });
+});
+</script>
+
 </body>
 </html>
