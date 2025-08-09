@@ -29,7 +29,7 @@ app.use(
 
 // Set EJS as template engine
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'public', 'images'));
+app.set('views', path.join(__dirname, 'views'));
 
 // Serve static files (CSS, JS, Images)
 app.use(express.static(path.join(__dirname, 'public')));

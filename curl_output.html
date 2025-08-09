@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarLuck</title>
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/homepage.css">
+
+    <style>
+        /* Your extra styles stay here */
+        .profile-dropdown { position: relative; display: inline-block; }
+        .profile-dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            z-index: 1; right: 0; border-radius: 5px; padding: 10px;
+            border: 1px solid var(--main-color);
+        }
+        .profile-dropdown-content a, .profile-dropdown-content div {
+            color: var(--text-color); padding: 8px 12px; text-decoration: none; display: block; font-size: 0.9rem;
+        }
+        .profile-dropdown-content p { font-size: 0.8rem; color: #ccc; }
+        .profile-dropdown-content .divider { height: 1px; background-color: #555; margin: 8px 0; }
+        .profile-dropdown-content a:hover { background-color: var(--main-color); color: var(--text-color); }
+        .profile-dropdown:hover .profile-dropdown-content { display: block; }
+        .profile-icon { cursor: pointer; }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header id="main-header">
+         <div class="nav container">
+            <i class='bx bx-menu' id="menu-icon"></i>
+            <a href="#" class="logo">Car<span>Luck</span></a>
+            <ul class="navbar">
+                <li><a href="/">Home</a></li>
+                <li><a href="/vehicles">Vehicles</a></li>
+                <li><a href="/Parts">Parts</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/favorites">Favorites</a></li>
+
+            </ul>
+            <div class="nav-icons">
+                <i class='bx bx-search' id="search-icon"></i>
+                <div id="profile-section"></div>
+            </div>
+        </div>
+        <div class="search-box container">
+            <input type="search" placeholder="Search...">
+        </div>
+    </header>
+
+    <section class="home" id="home">
+        <div class="home-text">
+            <h1>Welcome To The World <br>Of Your <span>Dream Ride...</span></h1>
+            <p>Discover the best car deals <br>and find your perfect ride with us.</p>
+            <a href="/vehicles" class="btn"><h4>Explore Now</h4></a>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container about-container">
+            <h2>About CarLuck</h2>
+            <p>
+                CarLuck is more than just a car dealership – it's your gateway to luxury, performance, and precision.
+            </p>
+            <p>
+                With a handpicked collection of top-brand vehicles, expert advisors, and tailored financing options.
+            </p>
+            <div class="about-features">
+                <div class="feature">
+                    <i class='bx bxs-car'></i>
+                    <h4>Luxury Vehicles</h4>
+                    <p>Only the finest brands and pristine rides.</p>
+                </div>
+                <div class="feature">
+                    <i class='bx bx-donate-heart'></i>
+                    <h4>Expert Support</h4>
+                    <p>Our experts guide you every step of the way.</p>
+                </div>
+                <div class="feature">
+                    <i class='bx bx-dollar-circle'></i>
+                    <h4>Flexible Financing</h4>
+                    <p>Financing solutions that suit your lifestyle.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <section class="contact" id="contact">
+            <div class="footer-container">
+                <div class="footer-section logo-section">
+                    <h2 class="footer-logo">Car<span>Luck</span></h2>
+                    <p>Your trusted destination for premium cars and parts.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Email: support@carluck.com</p>
+                    <p>Phone: +1 (555) 123-4567</p>
+                    <p>Location: 123 Auto Drive, Motor City</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class='bx bxl-facebook'></i></a>
+                    <a href="#"><i class='bx bxl-instagram'></i></a>
+                    <a href="#"><i class='bx bxl-twitter'></i></a>
+                    <a href="#"><i class='bx bxl-linkedin'></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 CarLuck. All rights reserved.</p>
+            </div>
+        </section>
+    </footer>
+
+    <script src="/js/homepage.js"></script>
+    <script src="/js/profile.js"></script>
+</body>
+</html>
