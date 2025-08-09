@@ -37,6 +37,51 @@ router.get('/favorites', (req, res) => {
   res.render('favorites', { favorites });
 });
 
+// Generic vehicle details route
+router.get('/vehicle/:slug', (req, res) => {
+  const { slug } = req.params;
+  const allowedSlugs = [
+    'BMWM4G82',
+    'audi-rs5',
+    'skoda-octavia',
+    'dodge-ram',
+    'mazda-miata',
+    'ford-raptor',
+    'nissan-patrol',
+    'cadillac-escalade',
+    'corvette',
+    'porsche-gt3'
+  ];
+
+  if (!allowedSlugs.includes(slug)) {
+    return res.status(404).send('Vehicle not found');
+  }
+
+  res.render(slug);
+});
+
+// Backward-compatibility: redirect old .html links to the new dynamic route
+router.get('/:slug.html', (req, res, next) => {
+  const { slug } = req.params;
+  const allowedSlugs = [
+    'BMWM4G82',
+    'audi-rs5',
+    'skoda-octavia',
+    'dodge-ram',
+    'mazda-miata',
+    'ford-raptor',
+    'nissan-patrol',
+    'cadillac-escalade',
+    'corvette',
+    'porsche-gt3'
+  ];
+
+  if (allowedSlugs.includes(slug)) {
+    return res.redirect(301, `/vehicle/${slug}`);
+  }
+  return res.status(404).send('Not found');
+});
+
 module.exports = router;
 
 

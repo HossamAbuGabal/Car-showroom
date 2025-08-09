@@ -1,26 +1,32 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const path = require('path');
+require('dotenv').config();
+require('dotenv').config({ path: path.join(__dirname, 'env.local') });
 
 // Router imports
 const homeRoutes = require("./routers/homepage");
 const favoritesRouter = require('./routers/favorites');
 const partsRouter = require('./routers/parts');
+const authRouter = require('./routers/auth');
 
 const app = express();
-const uri = 'mongodb+srv://hossam2303403:<db_password>@car-showroom.x3nzauz.mongodb.net/';
+const uri = process.env.MONGODB_URI;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+// Safe session placeholder (prevents crashes if no session store is configured)
+app.use((req, _res, next) => { if (!req.session) req.session = {}; next(); });
 
 // Set EJS as template engine
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, '../frontend/views'));
+app.set('views', path.join(__dirname, 'public', 'images'));
 
 // Serve static files (CSS, JS, Images)
-app.use(express.static(path.join(__dirname, '../frontend/public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Mount routers in correct order
+app.use('/api/auth', authRouter);
 app.use('/parts', partsRouter);
 app.use('/favorites', favoritesRouter);
 app.use('/', homeRoutes);
