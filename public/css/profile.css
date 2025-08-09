@@ -1,0 +1,29 @@
+:root {
+  --main-color: #663399;
+  --text-color: #FFEFD5;
+  --bg-color: #696969;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+button {
+  background-color: var(--main-color);
+  color: white;
+  border: none;
+  padding: 10px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#profile {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}

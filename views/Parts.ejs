@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CarLuck - Vehicles</title>
+  <link rel="stylesheet" href="../css/homepage.css" />
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+</head>
+<body class="bg-gray-100">
+
+  <header id="main-header">
+        <%- include('partials/navbar.ejs') %>
+
+        <div class="search-box container">
+            <input type="search" name="" placeholder="Search...">
+        </div>
+    </header>
+    
+     <script>
+    let lastScrollTop = 0;
+    const header = document.getElementById("main-header");
+
+    window.addEventListener("scroll", function() {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrollTop > lastScrollTop) {
+            // Scrolling down
+            header.style.top = "-100px";
+        } else {
+            // Scrolling up
+            header.style.top = "0";
+        }
+
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    });
+</script>
+
+  </script>
+
+  <section class="products-section">
+    <h2>Car Parts & Accessories</h2>
+    <div class="products-container">
+  <div class="product-card">
+    <div class="product-tile" style="background-image: url('https://carfromjapan.com/wp-content/uploads/2017/11/1-1.jpg'); height: 200px;"></div>
+    <div class="product-content">
+      <h3 class="product-title">Engine</h3>
+      <p class="product-description">Timing Belt, Water Pumps, Exhausts and, Gaskets.</p>
+      <p class="product-price"></p>
+      <a href="/parts/engine" class="product-btn">Show All</a>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="product-tile" style="background-image: url('https://3.imimg.com/data3/VQ/KJ/MY-3063994/auto-electrical-parts-500x500.jpg'); height: 200px;"></div>
+    <div class="product-content">
+      <h3 class="product-title">Electrical</h3>
+      <p class="product-description">Engine Management, Alternators, Starter Motors and, Ignition.</p>
+      <p class="product-price"></p>
+      <a href="/parts/electrical" class="product-btn">Show All</a>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="product-tile" style="background-image: url('https://mcprod.gsfcarparts.com/media/catalog/category/service-parts-800px.jpg'); height: 200px;"></div>
+    <div class="product-content">
+      <h3 class="product-title">Service Parts</h3>
+      <p class="product-description">Filters, Spark/Glow Plugs, Belts and, Engine Oil.</p>
+      <p class="product-price"></p>
+      <a href="/parts/service-parts" class="product-btn">Show All</a>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="product-tile" style="background-image: url('https://5.imimg.com/data5/CE/SW/XS/SELLER-89786929/automotive-brake-parts.jpg'); height: 200px;"></div>
+    <div class="product-content">
+      <h3 class="product-title">Braking</h3>
+      <p class="product-description">Pads, Discs, Wheel Cylinders and, Cables.</p>
+      <p class="product-price"></p>
+      <a href="/parts/braking" class="product-btn">Show All</a>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="product-tile" style="background-image: url('https://westcanauto.com/wp-content/uploads/2023/06/cp032195-automatic-transmission-parts-clutch-baskets-gears-00-05-vw-jetta-golf-mk4-beetle.jpg'); height: 200px;"></div>
+    <div class="product-content">
+      <h3 class="product-title">Transmission</h3>
+      <p class="product-description">Wheel Bearings, CV Joints/Boots, Clutches and, Drive Shafts.</p>
+      <p class="product-price"></p>
+      <a href="/parts/transmission" class="product-btn">Show All</a>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="product-tile" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwGuEkkSlJBpGpzsXXSKQos3FVxS2c-AaOTw&s'); height: 200px;"></div>
+    <div class="product-content">
+      <h3 class="product-title">Suspension</h3>
+      <p class="product-description">Coil Springs, Wishbones, Links and, Shock Absorbers.</p>
+      <p class="product-price"></p>
+      <a href="/parts/suspension" class="product-btn">Show All</a>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section logo-section">
+        <h2 class="footer-logo">Car<span>Luck</span></h2>
+        <p>Your trusted destination for premium cars and parts.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">FAQs</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p>Email: support@carluck.com</p>
+        <p>Phone: +1 (555) 123-4567</p>
+        <p>Location: 123 Auto Drive, Motor City</p>
+      </div>
+      <div class="footer-social">
+        <a href="#"><i class='bx bxl-facebook'></i></a>
+        <a href="#"><i class='bx bxl-instagram'></i></a>
+        <a href="#"><i class='bx bxl-twitter'></i></a>
+        <a href="#"><i class='bx bxl-linkedin'></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 CarLuck. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../js/homepage.js"></script>
+
+<script>
+document.querySelectorAll('.favorite-icon').forEach(function(icon, idx) {
+  const productCard = icon.closest('.product-card');
+  const carTitle = productCard.querySelector('.product-title').textContent;
+  const carPrice = productCard.querySelector('.product-price').textContent;
+  const carDescription = productCard.querySelector('.product-description').textContent;
+  const carImage = productCard.querySelector('.product-tile').style.backgroundImage.replace(/url\(['"]?(.*?)['"]?\)/, '$1');
+  const carData = { title: carTitle, price: carPrice, description: carDescription, image: carImage };
+
+  // Set initial state from localStorage
+  const carKey = 'favorite-' + idx;
+  if (localStorage.getItem(carKey) === 'true') {
+    icon.classList.add('favorited');
+    icon.querySelector('i').classList.replace('bx-star', 'bxs-star');
+  }
+
+  icon.addEventListener('click', function() {
+    icon.classList.toggle('favorited');
+    const isFav = icon.classList.contains('favorited');
+    localStorage.setItem(carKey, isFav);
+    if (isFav) {
+      icon.querySelector('i').classList.replace('bx-star', 'bxs-star');
+      // Send to backend
+      fetch('/favorites', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(carData)
+      });
+    } else {
+      icon.querySelector('i').classList.replace('bxs-star', 'bx-star');
+      // Remove from backend
+      fetch('/favorites', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title: carTitle })
+      });
+    }
+  });
+});
+</script>
+
+</body>
+</html>

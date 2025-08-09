@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CarLuck - Login / Signup</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+  <!-- Custom Styles -->
+   <link rel="stylesheet" href="../css/login.css" />
+</head>
+<body>
+
+  <div class="container">
+    <!-- Tabs -->
+    <div class="tabs">
+      <button id="loginTab" class="<%= (typeof tab !== 'undefined' && tab === 'login') ? 'active' : '' %>">Login</button>
+      <button id="signupTab" class="<%= (typeof tab !== 'undefined' && tab === 'signup') ? 'active' : '' %>">Signup</button>
+    </div>
+
+    <!-- Login Form -->
+    <form id="loginForm" class="form <%= (typeof tab !== 'undefined' && tab === 'signup') ? 'hidden' : '' %>">
+      <label>Email</label>
+      <input id="loginEmail" type="email" placeholder="you@example.com" required>
+      <label>Password</label>
+      <input id="loginPassword" type="password" placeholder="••••••••" required>
+      <button type="submit">Login</button>
+    </form>
+
+    <!-- Signup Form -->
+    <form id="signupForm" class="form <%= (typeof tab === 'undefined' || tab === 'login') ? 'hidden' : '' %>">
+      <label>First name</label>
+      <input id="firstName" type="text" placeholder="First name" required>
+      <label>Last name</label>
+      <input id="lastName" type="text" placeholder="Last name" required>
+      <label>Email</label>
+      <input id="signupEmail" type="email" placeholder="you@example.com" required>
+      <label>Phone number</label>
+      <input id="phoneNumber" type="tel" placeholder="e.g. 555-123-4567" required>
+      <label>Password</label>
+      <input id="signupPassword" type="password" placeholder="Create a password" required>
+      <label>User type</label>
+      <select id="userType" required>
+        <option value="patient">Patient</option>
+        <option value="doctor">Doctor</option>
+        <option value="caregiver">Caregiver</option>
+        <option value="admin">Admin</option>
+      </select>
+      <button type="submit">Create account</button>
+    </form>
+  </div>
+
+  <!-- JS Logic -->
+  <script src="../js/login.js"></script>
+</body>
+</html>

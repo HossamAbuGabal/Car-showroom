@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CarLuck - Parts</title>
+  <link rel="stylesheet" href="../css/homepage.css">
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+   <header id="main-header">
+
+        <%- include('partials/navbar.ejs') %>
+        <div class="search-box container">
+            <input type="search" name="" placeholder="Search...">
+        </div>
+    </header>
+    
+     <script>
+    let lastScrollTop = 0;
+    const header = document.getElementById("main-header");
+
+    window.addEventListener("scroll", function() {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrollTop > lastScrollTop) {
+            // Scrolling down
+            header.style.top = "-100px";
+        } else {
+            // Scrolling up
+            header.style.top = "0";
+        }
+
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    });
+</script>
+  
+
+  <section class="products-section">
+    <h2>Car Parts & Accessories</h2>
+    <div class="products-container">
+      <div class="product-card">
+        <div class="favorite-icon"><i class='bx bx-star'></i></div>
+
+        <div class="product-tile" style="background-image: url('https://www.mwcomponents.com/uploads/Resource-Center/1-MWC-Schiller-Park-MHK-Coiled-Springs.jpg'); height: 200px;"></div>
+        <div class="product-content">
+          <h3 class="product-title">Coil Springs</h3>
+          <p class="product-description">designed to store and release energy, absorb shock, or maintain force between contacting surfaces.</p>
+          <p class="product-price">$170</p>
+         
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="favorite-icon"><i class='bx bx-star'></i></div>
+
+        <div class="product-tile" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7NicdFBSjbvoTsC3BU8Yvw2sQ62Mcs8-EIA&s'); height: 200px;"></div>
+        <div class="product-content">
+          <h3 class="product-title">Wishbone</h3>
+          <p class="product-description">an independent suspension system for vehicles.</p>
+          <p class="product-price">$80</p>
+        
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="favorite-icon"><i class='bx bx-star'></i></div>
+
+        <div class="product-tile" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ09ngQLjBJOgHjfluqMgxWgeW4AcLd3bcBSA&s'); height: 200px;"></div>
+        <div class="product-content">
+          <h3 class="product-title">Links</h3>
+          <p class="product-description">connecting the wheels to the vehicle's frame and absorbing forces generated during driving.</p>
+          <p class="product-price">$60</p>
+         
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="favorite-icon"><i class='bx bx-star'></i></div>
+
+        <div class="product-tile" style="background-image: url('https://www.speedyapollo.ca/wp-content/uploads/2023/07/Shock-absorbers.jpg'); height: 200px;"></div>
+        <div class="product-content">
+          <h3 class="product-title">Shock Absorbers</h3>
+          <p class="product-description">control unwanted spring and suspension movement, ensuring a smooth and stable ride.</p>
+          <p class="product-price">$400</p>
+         
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section logo-section">
+        <h2 class="footer-logo">Car<span>Luck</span></h2>
+        <p>Your trusted destination for premium cars and parts.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">FAQs</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p>Email: support@carluck.com</p>
+        <p>Phone: +1 (555) 123-4567</p>
+        <p>Location: 123 Auto Drive, Motor City</p>
+      </div>
+      <div class="footer-social">
+        <a href="#"><i class='bx bxl-facebook'></i></a>
+        <a href="#"><i class='bx bxl-instagram'></i></a>
+        <a href="#"><i class='bx bxl-twitter'></i></a>
+        <a href="#"><i class='bx bxl-linkedin'></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 CarLuck. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../js/homepage.js"></script>
+</body>
+</html>
