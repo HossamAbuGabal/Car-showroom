@@ -69,8 +69,6 @@ exports.login = async (req, res) => {
   }
 };
 
-<<<<<<< Current (Your changes)
-=======
 exports.me = async (req, res) => {
   try {
     if (!req.session || !req.session.user) {
@@ -84,6 +82,18 @@ exports.me = async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 };
-
->>>>>>> Incoming (Background Agent changes)
-
+exports.logout = (req, res) => {
+  try {
+    req.session.destroy((err) => {
+      if (err) {
+        console.error('Logout error:', err);
+        return res.status(500).json({ error: 'Server error' });
+      }
+      res.clearCookie('connect.sid');
+      res.json({ message: 'Logged out successfully' });
+    });
+  } catch (err) {
+    console.error('Logout error:', err);
+    res.status(500).json({ error: 'Server error' });
+  }
+}

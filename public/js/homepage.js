@@ -65,4 +65,3 @@ document.addEventListener('DOMContentLoaded', () => {
     return text.replace(regex, '<span class="highlight">$1</span>');
   }
 });
-/*favorite*/

@@ -8,10 +8,3 @@ router.get('/me', authController.me);
 
 module.exports = router;
 
-
-<<<<<<< Current (Your changes)
-module.exports = router;
-
-
-=======
->>>>>>> Incoming (Background Agent changes)
