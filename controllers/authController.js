@@ -25,6 +25,7 @@ exports.signup = async (req, res) => {
       phoneNumber,
       userType,
       passwordHash,
+      username: email,
     });
 
     await newUser.save();
@@ -64,6 +65,20 @@ exports.login = async (req, res) => {
     res.json({ token, user: { id: user._id, email: user.email, userType: user.userType } });
   } catch (err) {
     console.error('Login error:', err);
+    res.status(500).json({ error: 'Server error' });
+  }
+};
+
+exports.me = async (req, res) => {
+  try {
+    if (!req.session || !req.session.user) {
+      return res.status(401).json({ error: 'Not authenticated' });
+    }
+    const user = await User.findById(req.session.user._id).select('-passwordHash').lean();
+    if (!user) return res.status(404).json({ error: 'User not found' });
+    res.json({ user });
+  } catch (err) {
+    console.error('Me error:', err);
     res.status(500).json({ error: 'Server error' });
   }
 };

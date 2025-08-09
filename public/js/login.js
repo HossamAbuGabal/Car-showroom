@@ -4,55 +4,109 @@ const loginForm = document.getElementById('loginForm');
 const signupForm = document.getElementById('signupForm');
 
 // Tab toggle functionality
-loginTab.addEventListener('click', () => {
-  loginTab.classList.add('active');
-  signupTab.classList.remove('active');
-  loginForm.classList.remove('hidden');
-  signupForm.classList.add('hidden');
-});
+if (loginTab && signupTab) {
+  loginTab.addEventListener('click', () => {
+    loginTab.classList.add('active');
+    signupTab.classList.remove('active');
+    loginForm.classList.remove('hidden');
+    signupForm.classList.add('hidden');
+  });
 
-signupTab.addEventListener('click', () => {
-  signupTab.classList.add('active');
-  loginTab.classList.remove('active');
-  signupForm.classList.remove('hidden');
-  loginForm.classList.add('hidden');
-});
+  signupTab.addEventListener('click', () => {
+    signupTab.classList.add('active');
+    loginTab.classList.remove('active');
+    signupForm.classList.remove('hidden');
+    loginForm.classList.add('hidden');
+  });
+}
+
+// Helper: show alert
+function showMessage(text) {
+  alert(text);
+}
 
 // Login form behavior
-loginForm.addEventListener('submit', (e) => {
+if (loginForm) {
+  loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const email = loginForm.querySelector('input[type="email"]').value;
+    const email = document.getElementById('loginEmail').value.trim();
+    const password = document.getElementById('loginPassword').value;
 
-    // For demonstration, we'll create a dummy profile if one doesn't exist
-    let userProfile = localStorage.getItem('userProfile');
-    if (!userProfile) {
-        const profile = {
-            name: "Guest User",
-            email: email,
-            favorites: [],
-            wishlist: [],
-        };
-        localStorage.setItem("userProfile", JSON.stringify(profile));
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        if (data && data.error === 'User not found') {
+          showMessage('No account found. Taking you to signup.');
+          window.location.href = '/signup';
+          return;
+        }
+        showMessage(data.error || 'Login failed');
+        return;
+      }
+
+      // Mark as logged in for client UI bits
+      localStorage.setItem('isLoggedIn', 'true');
+      // Optional: store a minimal profile for header welcome text
+      localStorage.setItem('userProfile', JSON.stringify({ email: data.user.email }));
+
+      window.location.href = '/profile';
+    } catch (err) {
+      console.error(err);
+      showMessage('Network error while logging in');
     }
-    localStorage.setItem('isLoggedIn', 'true');
-    window.location.href = 'homepage.html';
-});
-
+  });
+}
 
 // Signup form behavior
-signupForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const username = signupForm.querySelector('input[type="text"]').value;
-  const email = signupForm.querySelector('input[type="email"]').value;
+if (signupForm) {
+  signupForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const firstName = document.getElementById('firstName').value.trim();
+    const lastName = document.getElementById('lastName').value.trim();
+    const email = document.getElementById('signupEmail').value.trim();
+    const phoneNumber = document.getElementById('phoneNumber').value.trim();
+    const password = document.getElementById('signupPassword').value;
+    const userType = document.getElementById('userType').value;
 
-  const profile = {
-    name: username,
-    email: email,
-    favorites: [],
-    wishlist: [],
-  };
-  localStorage.setItem("userProfile", JSON.stringify(profile));
-  localStorage.setItem('isLoggedIn', 'true');
-  alert("Signup successful!");
-  window.location.href = 'homepage.html';
-});
+    try {
+      const res = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ firstName, lastName, email, phoneNumber, password, userType })
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        showMessage(data.error || 'Signup failed');
+        return;
+      }
+
+      // Auto-login after successful signup
+      const loginRes = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+      const loginData = await loginRes.json();
+      if (!loginRes.ok) {
+        showMessage('Account created. Please log in.');
+        window.location.href = '/login';
+        return;
+      }
+
+      localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('userProfile', JSON.stringify({ email: loginData.user.email }));
+
+      window.location.href = '/profile';
+    } catch (err) {
+      console.error(err);
+      showMessage('Network error while signing up');
+    }
+  });
+}

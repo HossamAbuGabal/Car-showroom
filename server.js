@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 require('dotenv').config();
 require('dotenv').config({ path: path.join(__dirname, 'env.local') });
+const session = require('express-session');
 
 // Router imports
 const homeRoutes = require("./routers/homepage");
@@ -15,8 +16,16 @@ const uri = process.env.MONGODB_URI;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// Safe session placeholder (prevents crashes if no session store is configured)
-app.use((req, _res, next) => { if (!req.session) req.session = {}; next(); });
+
+// Sessions (simple in-memory for dev)
+app.use(
+  session({
+    secret: process.env.JWT_SECRET || 'dev_secret',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 24 * 60 * 60 * 1000 },
+  })
+);
 
 // Set EJS as template engine
 app.set('view engine', 'ejs');
