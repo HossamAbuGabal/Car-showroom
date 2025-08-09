@@ -4,9 +4,13 @@ const User = require('../models/User');
 
 exports.signup = async (req, res) => {
   try {
+    console.log('Signup request body:', req.body);
     const { firstName, lastName, email, phoneNumber, password, userType } = req.body;
 
+    console.log('Extracted fields:', { firstName, lastName, email, phoneNumber, userType, passwordLength: password?.length });
+
     if (!firstName || !lastName || !email || !phoneNumber || !password || !userType) {
+      console.log('Missing required fields');
       return res.status(400).json({ error: 'All fields are required' });
     }
 
