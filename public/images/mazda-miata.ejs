@@ -7,14 +7,49 @@
   <link rel="stylesheet" href="../css/homepage.css" />
   <link rel="stylesheet" href="../css/product-page.css" />
   <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+<style>
+        /* Your extra styles stay here */
+        .profile-dropdown { position: relative; display: inline-block; }
+        .profile-dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            z-index: 1; right: 0; border-radius: 5px; padding: 10px;
+            border: 1px solid var(--main-color);
+        }
+        .profile-dropdown-content a, .profile-dropdown-content div {
+            color: var(--text-color); padding: 8px 12px; text-decoration: none; display: block; font-size: 0.9rem;
+        }
+        .profile-dropdown-content p { font-size: 0.8rem; color: #ccc; }
+        .profile-dropdown-content .divider { height: 1px; background-color: #555; margin: 8px 0; }
+        .profile-dropdown-content a:hover { background-color: var(--main-color); color: var(--text-color); }
+        .profile-dropdown:hover .profile-dropdown-content { display: block; }
+        .profile-icon { cursor: pointer; }
+    </style>
 </head>
 <body class="bg-gray-100">
+    <header id="main-header">
+         <div class="nav container">
+            <i class='bx bx-menu' id="menu-icon"></i>
+            <a href="#" class="logo">Car<span>Luck</span></a>
+            <ul class="navbar">
+                <li><a href="/">Home</a></li>
+                <li><a href="/vehicles">Vehicles</a></li>
+                <li><a href="/Parts">Parts</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/favorites">Favorites</a></li>
 
- <header id="main-header">
-
-        <%- include('partials/navbar.ejs') %>
+            </ul>
+            <div class="nav-icons">
+                <i class='bx bx-search' id="search-icon"></i>
+                <div id="profile-section"></div>
+            </div>
+        </div>
         <div class="search-box container">
-            <input type="search" name="" placeholder="Search...">
+            <input type="search" placeholder="Search...">
         </div>
     </header>
     
@@ -113,5 +148,6 @@
   </footer>
 
   <script src="../js/homepage.js"></script>
+  <script src="/js/profile.js"></script>
 </body>
 </html>

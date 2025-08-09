@@ -19,7 +19,6 @@ function loadProfile() {
     document.getElementById("profile-email").innerText = profile.email;
 
     displayList("favorites", profile.favorites);
-    displayList("wishlist", profile.wishlist);
   } else {
     alert("No profile found.");
   }
@@ -33,13 +32,6 @@ function addToFavorites() {
   displayList("favorites", profile.favorites);
 }
 
-function addToWishlist() {
-  const profile = JSON.parse(localStorage.getItem("userProfile")) || {};
-  profile.wishlist = profile.wishlist || [];
-  profile.wishlist.push("New Wishlist Item");
-  localStorage.setItem("userProfile", JSON.stringify(profile));
-  displayList("wishlist", profile.wishlist);
-}
 
 function logout() {
   localStorage.removeItem("userProfile");
@@ -69,19 +61,18 @@ document.addEventListener('DOMContentLoaded', function() {
         profileName = userProfile.name;
       }
       profileSection.innerHTML = `
-        <div class="profile-dropdown">
-          <i class='bx bxs-user-circle profile-icon' style="font-size: 28px; color: var(--text-color);"></i>
-          <div class="profile-dropdown-content">
-            <div><strong>Welcome, ${profileName}!</strong></div>
-            <div class="divider"></div>
-            <a href="/profile">View Profile</a>
-            <a href="/favorites">Favorites</a>
-            <a href="#" onclick="showWishlist()">Wishlist</a>
-            <div class="divider"></div>
-            <a href="#" onclick="logout()">Logout</a>
-          </div>
-        </div>
-      `;
+  <div class="profile-dropdown">
+    <i class='bx bxs-user-circle profile-icon' style="font-size: 28px; color: var(--text-color);"></i>
+    <div class="profile-dropdown-content">
+      <div><strong>Welcome, ${profileName}!</strong></div>
+      <div class="divider"></div>
+      <a href="/profile">View Profile</a>
+      <a href="/favorites">Favorites</a>
+      <div class="divider"></div>
+      <a href="#" onclick="logout()">Logout</a>
+    </div>
+  </div>
+`;
     } else {
       profileSection.innerHTML = `
         <a href="/login" class="profile-icon">
