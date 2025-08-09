@@ -3,29 +3,308 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Profile Page</title>
+  <title>CarLuck - Profile</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+  <!-- Custom Styles -->
   <link rel="stylesheet" href="../css/profile.css">
 </head>
 <body>
-  <h1>User Profile</h1>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <i class='bx bx-car'></i>
+        <span>CarLuck</span>
+      </div>
+      <div class="nav-links">
+        <a href="/" class="nav-link">
+          <i class='bx bx-home'></i>
+          Home
+        </a>
+        <a href="/vehicles" class="nav-link">
+          <i class='bx bx-car'></i>
+          Vehicles
+        </a>
+        <a href="/Parts" class="nav-link">
+          <i class='bx bx-wrench'></i>
+          Parts
+        </a>
+        <a href="/favorites" class="nav-link">
+          <i class='bx bx-heart'></i>
+          Favorites
+        </a>
+        <a href="/profile" class="nav-link active">
+          <i class='bx bx-user'></i>
+          Profile
+        </a>
+      </div>
+      <button class="logout-btn" onclick="logout()">
+        <i class='bx bx-log-out'></i>
+        Logout
+      </button>
+    </div>
+  </nav>
 
-  <div id="profile">
-    <p><strong>Name:</strong> <span id="profile-name">-</span></p>
-    <p><strong>Email:</strong> <span id="profile-email">-</span></p>
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container">
+      <!-- Profile Header -->
+      <div class="profile-header">
+        <div class="profile-avatar">
+          <div class="avatar-placeholder">
+            <i class='bx bx-user'></i>
+          </div>
+          <button class="avatar-upload" onclick="document.getElementById('avatarInput').click()">
+            <i class='bx bx-camera'></i>
+          </button>
+          <input type="file" id="avatarInput" accept="image/*" style="display: none;">
+        </div>
+        <div class="profile-info">
+          <h1 id="profileName">Loading...</h1>
+          <p id="profileEmail">loading@example.com</p>
+          <div class="profile-stats">
+            <div class="stat">
+              <span class="stat-number" id="favoritesCount">0</span>
+              <span class="stat-label">Favorites</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number" id="wishlistCount">0</span>
+              <span class="stat-label">Wishlist</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number" id="memberSince">0</span>
+              <span class="stat-label">Days</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile Content -->
+      <div class="profile-content">
+        <!-- Tabs -->
+        <div class="profile-tabs">
+          <button class="tab-btn active" data-tab="personal">
+            <i class='bx bx-user'></i>
+            Personal Info
+          </button>
+          <button class="tab-btn" data-tab="preferences">
+            <i class='bx bx-cog'></i>
+            Preferences
+          </button>
+          <button class="tab-btn" data-tab="favorites">
+            <i class='bx bx-heart'></i>
+            Favorites
+          </button>
+          <button class="tab-btn" data-tab="wishlist">
+            <i class='bx bx-bookmark'></i>
+            Wishlist
+          </button>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="tab-content">
+          <!-- Personal Info Tab -->
+          <div id="personal" class="tab-pane active">
+            <div class="form-section">
+              <h3>Personal Information</h3>
+              <form id="personalForm" class="profile-form">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" required readonly>
+                  <small>Email cannot be changed</small>
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input type="tel" id="phone" name="phoneNumber" required>
+                </div>
+                <button type="submit" class="save-btn">
+                  <i class='bx bx-save'></i>
+                  Save Changes
+                </button>
+              </form>
+            </div>
+
+            <div class="form-section">
+              <h3>Address Information</h3>
+              <form id="addressForm" class="profile-form">
+                <div class="form-group">
+                  <label for="street">Street Address</label>
+                  <input type="text" id="street" name="street">
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" id="city" name="city">
+                  </div>
+                  <div class="form-group">
+                    <label for="state">State/Province</label>
+                    <input type="text" id="state" name="state">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="zipCode">ZIP/Postal Code</label>
+                    <input type="text" id="zipCode" name="zipCode">
+                  </div>
+                  <div class="form-group">
+                    <label for="country">Country</label>
+                    <input type="text" id="country" name="country">
+                  </div>
+                </div>
+                <button type="submit" class="save-btn">
+                  <i class='bx bx-save'></i>
+                  Save Address
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Preferences Tab -->
+          <div id="preferences" class="tab-pane">
+            <div class="form-section">
+              <h3>Car Preferences</h3>
+              <form id="preferencesForm" class="profile-form">
+                <div class="form-group">
+                  <label>Preferred Brands</label>
+                  <div class="checkbox-grid">
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="brands" value="BMW">
+                      <span class="checkmark"></span>
+                      BMW
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="brands" value="Audi">
+                      <span class="checkmark"></span>
+                      Audi
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="brands" value="Mercedes">
+                      <span class="checkmark"></span>
+                      Mercedes
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="brands" value="Porsche">
+                      <span class="checkmark"></span>
+                      Porsche
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="brands" value="Ford">
+                      <span class="checkmark"></span>
+                      Ford
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="brands" value="Toyota">
+                      <span class="checkmark"></span>
+                      Toyota
+                    </label>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="minBudget">Minimum Budget ($)</label>
+                    <input type="number" id="minBudget" name="minBudget" min="0">
+                  </div>
+                  <div class="form-group">
+                    <label for="maxBudget">Maximum Budget ($)</label>
+                    <input type="number" id="maxBudget" name="maxBudget" min="0">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Fuel Type Preference</label>
+                  <div class="checkbox-grid">
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="fuelType" value="gasoline">
+                      <span class="checkmark"></span>
+                      Gasoline
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="fuelType" value="diesel">
+                      <span class="checkmark"></span>
+                      Diesel
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="fuelType" value="electric">
+                      <span class="checkmark"></span>
+                      Electric
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="fuelType" value="hybrid">
+                      <span class="checkmark"></span>
+                      Hybrid
+                    </label>
+                  </div>
+                </div>
+                <button type="submit" class="save-btn">
+                  <i class='bx bx-save'></i>
+                  Save Preferences
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Favorites Tab -->
+          <div id="favorites" class="tab-pane">
+            <div class="items-section">
+              <h3>My Favorite Vehicles</h3>
+              <div id="favoritesList" class="items-grid">
+                <div class="empty-state">
+                  <i class='bx bx-heart'></i>
+                  <h4>No favorites yet</h4>
+                  <p>Start browsing vehicles and add them to your favorites!</p>
+                  <a href="/vehicles" class="browse-btn">Browse Vehicles</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Wishlist Tab -->
+          <div id="wishlist" class="tab-pane">
+            <div class="items-section">
+              <h3>My Wishlist</h3>
+              <div id="wishlistList" class="items-grid">
+                <div class="empty-state">
+                  <i class='bx bx-bookmark'></i>
+                  <h4>Wishlist is empty</h4>
+                  <p>Add vehicles to your wishlist to save them for later!</p>
+                  <a href="/vehicles" class="browse-btn">Browse Vehicles</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Loading Spinner -->
+  <div id="loadingSpinner" class="loading-spinner hidden">
+    <div class="spinner"></div>
+    <p>Loading...</p>
   </div>
 
-  <button onclick="saveProfile()">Save Profile</button>
-  <button onclick="loadProfile()">Load Profile</button>
-  <button onclick="addToFavorites()">Add Favorite</button>
-  <button onclick="addToWishlist()">Add to Wishlist</button>
-  <button onclick="logout()">Logout</button>
+  <!-- Message Container -->
+  <div id="messageContainer" class="message-container hidden">
+    <div class="message-content">
+      <i class='bx'></i>
+      <span id="messageText"></span>
+    </div>
+  </div>
 
-  <h3>Favorites:</h3>
-  <ul id="favorites"></ul>
-
-  <h3>Wishlist:</h3>
-  <ul id="wishlist"></ul>
-
+  <!-- JS Logic -->
   <script src="../js/profile.js"></script>
 </body>
 </html>

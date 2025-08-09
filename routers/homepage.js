@@ -37,6 +37,18 @@ router.get('/favorites', (req, res) => {
   res.render('favorites', { favorites });
 });
 
+// Login page route
+router.get('/login', (req, res) => {
+    console.log("login route hit");
+    res.render('login');
+});
+
+// Profile page route
+router.get('/profile', (req, res) => {
+    console.log("profile route hit");
+    res.render('profile');
+});
+
 // Generic vehicle details route
 router.get('/vehicle/:slug', (req, res) => {
   const { slug } = req.params;

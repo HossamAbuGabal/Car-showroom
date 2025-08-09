@@ -6,10 +6,26 @@ const UserSchema = new mongoose.Schema(
     lastName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     phoneNumber: { type: String, required: true },
-    userType: { type: String, enum: ['admin', 'patient', 'doctor', 'caregiver'], required: true },
+    userType: { type: String, enum: ['customer', 'admin'], default: 'customer' },
     passwordHash: { type: String, required: true },
-    assignedDoctors: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
-    assignedCaregivers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+    favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Vehicle' }],
+    wishlist: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Vehicle' }],
+    profilePicture: { type: String, default: '' },
+    address: {
+      street: String,
+      city: String,
+      state: String,
+      zipCode: String,
+      country: String
+    },
+    preferences: {
+      preferredBrands: [String],
+      budget: {
+        min: Number,
+        max: Number
+      },
+      fuelType: [String]
+    }
   },
   { timestamps: true }
 );
