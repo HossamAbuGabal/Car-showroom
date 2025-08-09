@@ -26,7 +26,10 @@
       <label>Email</label>
       <input id="loginEmail" type="email" placeholder="you@example.com" required>
       <label>Password</label>
-      <input id="loginPassword" type="password" placeholder="••••••••" required>
+      <input id="loginPassword" type="password" placeholder="••••••••" required 
+            pattern="^(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{8,}$"
+  
+  title="Password must be at least 8 characters, contain at least one number and one special character.">
       <button type="submit">Login</button>
     </form>
 
@@ -39,14 +42,18 @@
       <label>Email</label>
       <input id="signupEmail" type="email" placeholder="you@example.com" required>
       <label>Phone number</label>
-      <input id="phoneNumber" type="tel" placeholder="e.g. 555-123-4567" required>
+      <input id="phoneNumber" type="tel" placeholder="e.g. 55512345678" required 
+        pattern="^\d{11}$"
+        title="Phone number must be 11 digits long." >    
       <label>Password</label>
-      <input id="signupPassword" type="password" placeholder="Create a password" required>
+      <input id="signupPassword" type="password" placeholder="Create a password" required 
+        pattern="^(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{8,}$"
+         title="Password must be at least 8 characters, contain at least one number and one special character.">      
       <label>User type</label>
-      <select id="userType" required>
-        <option value="Customer">Customer</option>
-        <option value="Business">Business</option>
-        <option value="admin">Admin</option>
+       <select id="userType" required>
+         <option value="Customer">Customer</option>
+         <option value="Business">Business</option>
+          <option value="admin">Admin</option>
       </select>
       <button type="submit">Create account</button>
     </form>
