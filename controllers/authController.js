@@ -7,10 +7,7 @@ exports.signup = async (req, res) => {
     console.log('Signup request body:', req.body);
     const { firstName, lastName, email, phoneNumber, password, userType } = req.body;
 
-    console.log('Extracted fields:', { firstName, lastName, email, phoneNumber, userType, passwordLength: password?.length });
-
     if (!firstName || !lastName || !email || !phoneNumber || !password || !userType) {
-      console.log('Missing required fields');
       return res.status(400).json({ error: 'All fields are required' });
     }
 
@@ -51,11 +48,7 @@ exports.login = async (req, res) => {
     if (!isMatch) return res.status(400).json({ error: 'Invalid credentials' });
 
     const token = jwt.sign(
-      {
-        _id: user._id,
-        email: user.email,
-        userType: user.userType,
-      },
+      { _id: user._id, email: user.email, userType: user.userType },
       process.env.JWT_SECRET,
       { expiresIn: '1d' }
     );
@@ -66,7 +59,14 @@ exports.login = async (req, res) => {
       userType: user.userType,
     };
 
-    res.json({ token, user: { id: user._id, email: user.email, userType: user.userType } });
+    res.json({
+      token,
+      user: {
+        id: user._id,
+        email: user.email,
+        userType: user.userType,
+      },
+    });
   } catch (err) {
     console.error('Login error:', err);
     res.status(500).json({ error: 'Server error' });
@@ -78,7 +78,9 @@ exports.me = async (req, res) => {
     if (!req.session || !req.session.user) {
       return res.status(401).json({ error: 'Not authenticated' });
     }
-    const user = await User.findById(req.session.user._id).select('-passwordHash').lean();
+    const user = await User.findById(req.session.user._id)
+      .select('-passwordHash')
+      .lean();
     if (!user) return res.status(404).json({ error: 'User not found' });
     res.json({ user });
   } catch (err) {
@@ -86,6 +88,7 @@ exports.me = async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 };
+
 exports.logout = (req, res) => {
   try {
     req.session.destroy((err) => {
@@ -100,4 +103,4 @@ exports.logout = (req, res) => {
     console.error('Logout error:', err);
     res.status(500).json({ error: 'Server error' });
   }
-}
+};

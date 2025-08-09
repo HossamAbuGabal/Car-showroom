@@ -1,19 +1,42 @@
 const express = require('express');
-const router = express.Router()
+const router = express.Router();
 const User = require('../models/User');
 
-router.get('/', (req, res) => {
-    console.log("Homepage route hit");
-  res.render('homepage'); 
+const ADMIN_EMAIL = 'admin@carluck.com'; // Change to your admin email
+
+// Helper to check if logged-in user is admin
+async function checkAdmin(req) {
+  if (req.session && req.session.user) {
+    const user = await User.findById(req.session.user._id).lean();
+    if (user && user.email === ADMIN_EMAIL) {
+      return true;
+    }
+  }
+  return false;
+}
+
+// Homepage route with admin check
+router.get('/', async (req, res) => {
+  console.log('Homepage route hit');
+  try {
+    const isAdmin = await checkAdmin(req);
+    res.render('homepage', {
+      user: req.session.user || null,
+      isAdmin
+    });
+  } catch (err) {
+    console.error('Error loading homepage:', err);
+    res.status(500).send('Server error');
+  }
 });
 
 // Auth pages
 router.get('/login', (req, res) => {
-  res.render('login', { tab: 'login' });
+  res.render('login', { tab: 'login', isAdmin: false });
 });
 
 router.get('/signup', (req, res) => {
-  res.render('login', { tab: 'signup' });
+  res.render('login', { tab: 'signup', isAdmin: false });
 });
 
 // Protected profile page
@@ -27,7 +50,8 @@ router.get('/profile', async (req, res) => {
       req.session.destroy(() => {});
       return res.redirect('/login');
     }
-    res.render('profile', { user });
+    const isAdmin = await checkAdmin(req);
+    res.render('profile', { user, isAdmin });
   } catch (err) {
     console.error('Profile route error:', err);
     res.status(500).send('Server error');
@@ -44,39 +68,60 @@ router.get('/logout', (req, res) => {
   }
 });
 
-//link number 1 for vehicles
-router.get('/vehicles', (req, res) => {
-    console.log("vehicles route hit");
-    res.render('vehicles');
+// Vehicles
+router.get('/vehicles', async (req, res) => {
+  console.log('vehicles route hit');
+  const isAdmin = await checkAdmin(req);
+  res.render('vehicles', { isAdmin });
 });
 
-//link number 2 for parts
-router.get('/Parts', (req, res) => {
-    console.log("Parts route hit");
-    res.render('Parts');
+// Parts
+router.get('/Parts', async (req, res) => {
+  console.log('Parts route hit');
+  const isAdmin = await checkAdmin(req);
+  res.render('Parts', { isAdmin });
 });
 
-//link number 3 for about
-router.get('/about', (req, res) => {
-    console.log("about route hit");
-    res.render('about');
+// About
+router.get('/about', async (req, res) => {
+  console.log('about route hit');
+  const isAdmin = await checkAdmin(req);
+  res.render('about', { isAdmin });
 });
 
-//link number 4 for contact
-router.get('/contact', (req, res) => {
-    console.log("contact route hit");
-    res.render('contact');
+// Contact
+router.get('/contact', async (req, res) => {
+  console.log('contact route hit');
+  const isAdmin = await checkAdmin(req);
+  res.render('contact', { isAdmin });
 });
 
-//link number 5 for favorites
+// Favorites
+router.get('/favorites', async (req, res) => {
+  const favorites = req.session.favorites || [];
+  const isAdmin = await checkAdmin(req);
+  res.render('favorites', { favorites, isAdmin });
+});
 
-router.get('/favorites', (req, res) => {
-  const favorites = req.session.favorites || []; 
-  res.render('favorites', { favorites });
+// Admin page (protected)
+router.get('/admin', async (req, res) => {
+  try {
+    if (!req.session || !req.session.user) {
+      return res.status(403).send('Access denied. Admins only.');
+    }
+    const user = await User.findById(req.session.user._id).lean();
+    if (!user || user.email !== ADMIN_EMAIL) {
+      return res.status(403).send('Access denied. Admins only.');
+    }
+    res.render('admin', { user, isAdmin: true });
+  } catch (err) {
+    console.error('Admin route error:', err);
+    res.status(500).send('Server error');
+  }
 });
 
 // Generic vehicle details route
-router.get('/vehicle/:slug', (req, res) => {
+router.get('/vehicle/:slug', async (req, res) => {
   const { slug } = req.params;
   const allowedSlugs = [
     'BMWM4G82',
@@ -95,11 +140,12 @@ router.get('/vehicle/:slug', (req, res) => {
     return res.status(404).send('Vehicle not found');
   }
 
-  res.render(slug);
+  const isAdmin = await checkAdmin(req);
+  res.render(slug, { isAdmin });
 });
 
-// Backward-compatibility: redirect old .html links to the new dynamic route
-router.get('/:slug.html', (req, res, next) => {
+// Backward-compatibility: redirect old .html links
+router.get('/:slug.html', (req, res) => {
   const { slug } = req.params;
   const allowedSlugs = [
     'BMWM4G82',
@@ -121,5 +167,3 @@ router.get('/:slug.html', (req, res, next) => {
 });
 
 module.exports = router;
-
-
