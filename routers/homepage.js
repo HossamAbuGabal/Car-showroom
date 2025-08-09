@@ -1,9 +1,47 @@
 const express = require('express');
 const router = express.Router()
+const User = require('../models/User');
 
 router.get('/', (req, res) => {
     console.log("Homepage route hit");
   res.render('homepage'); 
+});
+
+// Auth pages
+router.get('/login', (req, res) => {
+  res.render('login', { tab: 'login' });
+});
+
+router.get('/signup', (req, res) => {
+  res.render('login', { tab: 'signup' });
+});
+
+// Protected profile page
+router.get('/profile', async (req, res) => {
+  try {
+    if (!req.session || !req.session.user) {
+      return res.redirect('/login');
+    }
+    const user = await User.findById(req.session.user._id).lean();
+    if (!user) {
+      req.session.destroy(() => {});
+      return res.redirect('/login');
+    }
+    res.render('profile', { user });
+  } catch (err) {
+    console.error('Profile route error:', err);
+    res.status(500).send('Server error');
+  }
+});
+
+router.get('/logout', (req, res) => {
+  if (req.session) {
+    req.session.destroy(() => {
+      res.redirect('/');
+    });
+  } else {
+    res.redirect('/');
+  }
 });
 
 //link number 1 for vehicles
