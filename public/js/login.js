@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     // Example: Send to backend
-    fetch("/signup", {
+    fetch("/api/auth/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
       password: document.getElementById("loginPassword").value,
     };
 
-    fetch("/login", {
+    fetch("/api/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)

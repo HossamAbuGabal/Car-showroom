@@ -8,7 +8,14 @@ exports.signup = async (req, res) => {
     const { firstName, lastName, email, phoneNumber, password, userType } = req.body;
 
     if (!firstName || !lastName || !email || !phoneNumber || !password || !userType) {
+      console.log('Missing fields:', { firstName, lastName, email, phoneNumber, password: password ? 'provided' : 'missing', userType });
       return res.status(400).json({ error: 'All fields are required' });
+    }
+
+    // Validate password is a string
+    if (typeof password !== 'string' || password.length === 0) {
+      console.log('Invalid password type or empty:', typeof password, password);
+      return res.status(400).json({ error: 'Password must be a valid string' });
     }
 
     const existingUser = await User.findOne({ email });
@@ -16,8 +23,10 @@ exports.signup = async (req, res) => {
       return res.status(409).json({ error: 'Email already in use' });
     }
 
+    console.log('About to hash password, type:', typeof password, 'length:', password.length);
     const salt = await bcrypt.genSalt(10);
     const passwordHash = await bcrypt.hash(password, salt);
+    console.log('Password hashed successfully');
 
     const newUser = new User({
       firstName,

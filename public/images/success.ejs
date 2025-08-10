@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success - CarLuck</title>
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/homepage.css">
+    <style>
+        .success-message {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh;
+            text-align: center;
+        }
+        .message-box {
+            background: var(--container-color);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .message-box h1 {
+            color: var(--main-color);
+            margin-bottom: 1rem;
+        }
+        .message-box p {
+            margin-bottom: 1.5rem;
+        }
+        .btn {
+            display: inline-block;
+            background: var(--main-color);
+            color: #fff;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .btn:hover {
+            background: #d40000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="main-header">
+        <div class="nav container">
+            <i class='bx bx-menu' id="menu-icon"></i>
+            <a href="/" class="logo">Car<span>Luck</span></a>
+            <ul class="navbar">
+                <li><a href="/">Home</a></li>
+                <li><a href="/vehicles">Vehicles</a></li>
+                <li><a href="/parts">Parts</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/favorites">Favorites</a></li>
+            </ul>
+            <div class="nav-icons">
+                <i class='bx bx-search' id="search-icon"></i>
+                <a href="/login"><i class='bx bx-user'></i></a>
+            </div>
+        </div>
+        <div class="search-box container">
+            <input type="search" placeholder="Search...">
+        </div>
+    </header>
+
+    <!-- Success Message -->
+    <section class="success-message container">
+        <div class="message-box">
+            <h1>🎉 Success!</h1>
+            <p>Your action has been completed successfully.</p>
+            <a href="/" class="btn">Return to Home</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <section class="contact" id="contact">
+            <div class="footer-container">
+                <div class="footer-section logo-section">
+                    <h2 class="footer-logo">Car<span>Luck</span></h2>
+                    <p>Your trusted destination for premium cars and parts.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="/contact">Contact</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Email: support@carluck.com</p>
+                    <p>Phone: +1 (555) 123-4567</p>
+                    <p>Location: 123 Auto Drive, Motor City</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class='bx bxl-facebook'></i></a>
+                    <a href="#"><i class='bx bxl-instagram'></i></a>
+                    <a href="#"><i class='bx bxl-twitter'></i></a>
+                    <a href="#"><i class='bx bxl-linkedin'></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 CarLuck. All rights reserved.</p>
+            </div>
+        </section>
+    </footer>
+
+    <script src="/js/homepage.js"></script>
+</body>
+</html>
