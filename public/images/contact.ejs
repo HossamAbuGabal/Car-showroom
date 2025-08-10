@@ -1,43 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CarLuck - Parts</title>
-  <link rel="stylesheet" href="../css/homepage.css">
-  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-  <style>
-        .profile-dropdown { position: relative; display: inline-block; }
-        .profile-dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #333;
-            min-width: 200px;
-            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-            z-index: 1; right: 0; border-radius: 5px; padding: 10px;
-            border: 1px solid var(--main-color);
-        }
-        .profile-dropdown-content a, .profile-dropdown-content div {
-            color: var(--text-color); padding: 8px 12px; text-decoration: none; display: block; font-size: 0.9rem;
-        }
-        .profile-dropdown-content p { font-size: 0.8rem; color: #ccc; }
-        .profile-dropdown-content .divider { height: 1px; background-color: #555; margin: 8px 0; }
-        .profile-dropdown-content a:hover { background-color: var(--main-color); color: var(--text-color); }
-        .profile-dropdown:hover .profile-dropdown-content { display: block; }
-        .profile-icon { cursor: pointer; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us - CarLuck</title>
+  <link rel="stylesheet" href="/css/homepage.css" />
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+<style>
+    /* Contact Page Specific Styles */
+    .contact-main {
+      padding-top: 6rem;
+      background-color: #111;
+      min-height: 100vh;
+    }
+    
+    .contact-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .contact-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .contact-header h1 {
+      font-size: 2.5rem;
+      color: var(--main-color);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    .contact-header p {
+      font-size: 1.1rem;
+      color: #bbb;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .contact-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 4rem;
+    }
+    
+    .contact-info {
+      background-color: #1a1a1a;
+      border-radius: 12px;
+      padding: 2rem;
+      border: 1px solid #222;
+    }
+    
+    .contact-info h2 {
+      font-size: 1.8rem;
+      color: var(--text-color);
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    
+    .contact-info h2::after {
+      content: '';
+      width: 60px;
+      height: 3px;
+      background-color: var(--main-color);
+      display: block;
+      margin: 0.8rem 0;
+    }
+    
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+    
+    .info-item i {
+      font-size: 1.5rem;
+      color: var(--main-color);
+      margin-right: 1rem;
+      margin-top: 0.3rem;
+    }
+    
+    .info-content h3 {
+      color: var(--text-color);
+      margin-bottom: 0.3rem;
+      font-size: 1.1rem;
+    }
+    
+    .info-content p {
+      color: #bbb;
+      font-size: 0.95rem;
+    }
+    
+    .business-hours {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid #222;
+    }
+    
+    .business-hours h3 {
+      color: var(--text-color);
+      margin-bottom: 1rem;
+    }
+    
+    .business-hours p {
+      color: #bbb;
+      margin-bottom: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      max-width: 250px;
+    }
+    
+    .business-hours p span:last-child {
+      color: var(--main-color);
+    }
+    
+    .contact-form {
+      background-color: #1a1a1a;
+      border-radius: 12px;
+      padding: 2rem;
+      border: 1px solid #222;
+    }
+    
+    .contact-form h2 {
+      font-size: 1.8rem;
+      color: var(--text-color);
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group label {
+      display: block;
+      color: #bbb;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem;
+      background-color: #222;
+      border: 1px solid #333;
+      border-radius: 8px;
+      color: var(--text-color);
+      font-size: 1rem;
+    }
+    
+    .form-group textarea {
+      height: 150px;
+      resize: vertical;
+    }
+    
+    .submit-btn {
+      background-color: var(--main-color);
+      color: var(--text-color);
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .submit-btn:hover {
+      background-color: #7d48b1;
+      transform: translateY(-2px);
+    }
+    
+    .map-container {
+      margin-top: 3rem;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      height: 400px;
+    }
+    
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
+    @media (max-width: 768px) {
+      .contact-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .map-container {
+        height: 300px;
+      }
+    }
+  </style>
 </head>
 <body class="bg-gray-100">
     <header id="main-header">
          <div class="nav container">
             <i class='bx bx-menu' id="menu-icon"></i>
-            <a href="#" class="logo">Car<span>Luck</span></a>
+            <a href="/" class="logo">Car<span>Luck</span></a>
             <ul class="navbar">
                 <li><a href="/">Home</a></li>
                 <li><a href="/vehicles">Vehicles</a></li>
                 <li><a href="/Parts">Parts</a></li>
                 <li><a href="/about">About</a></li>
-                <li><a href="/contact">Contact</a></li>
+                <li><a href="/contact" class="active">Contact</a></li>
                 <li><a href="/favorites">Favorites</a></li>
             </ul>
             <div class="nav-icons">
@@ -50,65 +225,139 @@
         </div>
     </header>
 
-   <section class="contact" id="contact">
-        <div class="container">
-            <h2>Contact Us</h2>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i class='bx bx-envelope'></i>
-                    <p>Email: support@carluck.com</p>
-                </div>
-                <div class="contact-item">
-                    <i class='bx bx-phone'></i>
-                    <p>Phone: +1 (555) 123-4567</p>
-                </div>
-                <div class="contact-item">
-                    <i class='bx bx-map'></i>
-                    <p>Location: 123 Auto Drive, Motor City</p>
-                </div>
+    <script>
+    let lastScrollTop = 0;
+    const header = document.getElementById("main-header");
+
+    window.addEventListener("scroll", function() {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrollTop > lastScrollTop) {
+            // Scrolling down
+            header.style.top = "-100px";
+        } else {
+            // Scrolling up
+            header.style.top = "0";
+        }
+
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    });
+    </script>
+
+<main class="contact-main">
+    <div class="contact-container">
+      <div class="contact-header">
+        <h1>Contact CarLuck</h1>
+        <p>We're here to help with all your automotive needs</p>
+      </div>
+      
+      <div class="contact-content">
+        <div class="contact-info">
+          <h2>Get In Touch</h2>
+          
+          <div class="info-item">
+            <i class='bx bx-map'></i>
+            <div class="info-content">
+              <h3>Location</h3>
+              <p>123 Auto Drive, Motor City</p>
             </div>
+          </div>
+          
+          <div class="info-item">
+            <i class='bx bx-phone'></i>
+            <div class="info-content">
+              <h3>Phone</h3>
+              <p>+1 (555) 123-4567</p>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <i class='bx bx-envelope'></i>
+            <div class="info-content">
+              <h3>Email</h3>
+              <p>support@carluck.com</p>
+            </div>
+          </div>
+          
+          <div class="business-hours">
+            <h3>Business Hours</h3>
+            <p><span>Monday - Friday:</span> <span>9:00 AM - 7:00 PM</span></p>
+            <p><span>Saturday:</span> <span>10:00 AM - 5:00 PM</span></p>
+            <p><span>Sunday:</span> <span>Closed</span></p>
+          </div>
         </div>
-    </section>
-
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-section logo-section">
-        <h2 class="footer-logo">Car<span>Luck</span></h2>
-        <p>Your trusted destination for premium cars and parts.</p>
+        
+        <div class="contact-form">
+          <h2>Send Us a Message</h2>
+          <form>
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject">
+            </div>
+            <div class="form-group">
+              <label for="message">Your Message</label>
+              <textarea id="message" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+          </form>
+        </div>
       </div>
-      <div class="footer-section">
-        <h3>Company</h3>
-        <ul>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h3>Support</h3>
-        <ul>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">FAQs</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h3>Contact Us</h3>
-        <p>Email: support@carluck.com</p>
-        <p>Phone: +1 (555) 123-4567</p>
-        <p>Location: 123 Auto Drive, Motor City</p>
-      </div>
-      <div class="footer-social">
-        <a href="#"><i class='bx bxl-facebook'></i></a>
-        <a href="#"><i class='bx bxl-instagram'></i></a>
-        <a href="#"><i class='bx bxl-twitter'></i></a>
-        <a href="#"><i class='bx bxl-linkedin'></i></a>
+      
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215573291234!2d-73.98784492426404!3d40.74844097138988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ0JzU0LjQiTiA3M8KwNTknMTMuNiJX!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 CarLuck. All rights reserved.</p>
-    </div>
-  </footer>
+  </main>
 
-  <script src="../js/homepage.js"></script>
-  <script src
-  
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-section logo-section">
+      <h2 class="footer-logo">Car<span>Luck</span></h2>
+      <p>Your trusted destination for premium cars and parts.</p>
+    </div>
+    <div class="footer-section">
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Support</h3>
+      <ul>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="#">FAQs</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Contact Us</h3>
+      <p>Email: support@carluck.com</p>
+      <p>Phone: +1 (555) 123-4567</p>
+      <p>Location: 123 Auto Drive, Motor City</p>
+    </div>
+    <div class="footer-social">
+      <a href="#"><i class='bx bxl-facebook'></i></a>
+      <a href="#"><i class='bx bxl-instagram'></i></a>
+      <a href="#"><i class='bx bxl-twitter'></i></a>
+      <a href="#"><i class='bx bxl-linkedin'></i></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 CarLuck. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="/js/homepage.js"></script>
+<script src="/js/profile.js"></script>
+</body>
+</html>

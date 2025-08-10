@@ -9,7 +9,11 @@ const UserSchema = new mongoose.Schema(
     userType: { type: String, enum: ['Customer', 'Business'], required: true },
     passwordHash: { type: String, required: true },
     // Satisfy potential legacy unique index on `username`
-    username: { type: String, unique: true, default: function() { return this.email; } },
+    username: { 
+      type: String, 
+      unique: true, 
+      default: function() { return this.email; } 
+    },
   },
   { timestamps: true }
 );

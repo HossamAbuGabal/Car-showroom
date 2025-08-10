@@ -1,112 +1,80 @@
-const loginTab = document.getElementById('loginTab');
-const signupTab = document.getElementById('signupTab');
-const loginForm = document.getElementById('loginForm');
-const signupForm = document.getElementById('signupForm');
+document.addEventListener("DOMContentLoaded", () => {
+  const loginTab = document.getElementById("loginTab");
+  const signupTab = document.getElementById("signupTab");
+  const loginForm = document.getElementById("loginForm");
+  const signupForm = document.getElementById("signupForm");
 
-// Tab toggle functionality
-if (loginTab && signupTab) {
-  loginTab.addEventListener('click', () => {
-    loginTab.classList.add('active');
-    signupTab.classList.remove('active');
-    loginForm.classList.remove('hidden');
-    signupForm.classList.add('hidden');
+  // Tab switching
+  loginTab.addEventListener("click", () => {
+    loginForm.classList.remove("hidden");
+    signupForm.classList.add("hidden");
+    loginTab.classList.add("active");
+    signupTab.classList.remove("active");
   });
 
-  signupTab.addEventListener('click', () => {
-    signupTab.classList.add('active');
-    loginTab.classList.remove('active');
-    signupForm.classList.remove('hidden');
-    loginForm.classList.add('hidden');
+  signupTab.addEventListener("click", () => {
+    signupForm.classList.remove("hidden");
+    loginForm.classList.add("hidden");
+    signupTab.classList.add("active");
+    loginTab.classList.remove("active");
   });
-}
 
-// Helper: show alert
-function showMessage(text) {
-  alert(text);
-}
-
-// Login form behavior
-if (loginForm) {
-  loginForm.addEventListener('submit', async (e) => {
+  // Signup form submission
+  signupForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    const email = document.getElementById('loginEmail').value.trim();
-    const password = document.getElementById('loginPassword').value;
 
-    try {
-      const res = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
-      });
+    const countryCode = document.getElementById("countryCode").value;
+    const phoneNumber = document.getElementById("phoneNumber").value;
+    const fullPhoneNumber = `${countryCode}${phoneNumber}`;
 
-      const data = await res.json();
-      if (!res.ok) {
-        if (data && data.error === 'User not found') {
-          showMessage('No account found. Taking you to signup.');
-          window.location.href = '/signup';
-          return;
-        }
-        showMessage(data.error || 'Login failed');
-        return;
+    const data = {
+      firstName: document.getElementById("firstName").value,
+      lastName: document.getElementById("lastName").value,
+      email: document.getElementById("signupEmail").value,
+      phoneNumber: fullPhoneNumber,
+      password: document.getElementById("signupPassword").value,
+      userType: document.getElementById("userType").value,
+    };
+
+    // Example: Send to backend
+    fetch("/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    })
+    .then(res => {
+      if (res.ok) {
+        alert("Account created successfully!");
+        window.location.href = "/login";
+      } else {
+        alert("Error creating account");
       }
-
-      // Mark as logged in for client UI bits
-      localStorage.setItem('isLoggedIn', 'true');
-      // Optional: store a minimal profile for header welcome text
-      localStorage.setItem('userProfile', JSON.stringify({ email: data.user.email }));
-
-      window.location.href = '/profile';
-    } catch (err) {
-      console.error(err);
-      showMessage('Network error while logging in');
-    }
+    })
+    .catch(err => console.error("Signup error:", err));
   });
-}
 
-// Signup form behavior
-if (signupForm) {
-  signupForm.addEventListener('submit', async (e) => {
+  // Login form submission
+  loginForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    const firstName = document.getElementById('firstName').value.trim();
-    const lastName = document.getElementById('lastName').value.trim();
-    const email = document.getElementById('signupEmail').value.trim();
-    const phoneNumber = document.getElementById('phoneNumber').value.trim();
-    const password = document.getElementById('signupPassword').value;
-    const userType = document.getElementById('userType').value;
 
-    try {
-      const res = await fetch('/api/auth/signup', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ firstName, lastName, email, phoneNumber, password, userType })
-      });
+    const data = {
+      email: document.getElementById("loginEmail").value,
+      password: document.getElementById("loginPassword").value,
+    };
 
-      const data = await res.json();
-      if (!res.ok) {
-        showMessage(data.error || 'Signup failed');
-        return;
+    fetch("/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    })
+    .then(res => {
+      if (res.ok) {
+        alert("Login successful!");
+        window.location.href = "/";
+      } else {
+        alert("Invalid credentials");
       }
-
-      // Auto-login after successful signup
-      const loginRes = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
-      });
-      const loginData = await loginRes.json();
-      if (!loginRes.ok) {
-        showMessage('Account created. Please log in.');
-        window.location.href = '/login';
-        return;
-      }
-
-      localStorage.setItem('isLoggedIn', 'true');
-      localStorage.setItem('userProfile', JSON.stringify({ email: loginData.user.email }));
-
-      window.location.href = '/profile';
-    } catch (err) {
-      console.error(err);
-      showMessage('Network error while signing up');
-    }
+    })
+    .catch(err => console.error("Login error:", err));
   });
-}
+});
