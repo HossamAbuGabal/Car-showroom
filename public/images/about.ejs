@@ -1,18 +1,39 @@
-@ -0,0 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Us - CarLuck</title>
-  <link rel="stylesheet" href="../css/homepage.css" />
+  <title>Contact Us - CarLuck</title>
+  <link rel="stylesheet" href="/css/homepage.css" />
   <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
   <style>
+    /* Your extra styles stay here */
+    .profile-dropdown { position: relative; display: inline-block; }
+    .profile-dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #333;
+        min-width: 200px;
+        box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+        z-index: 1; right: 0; border-radius: 5px; padding: 10px;
+        border: 1px solid var(--main-color);
+    }
+    .profile-dropdown-content a, .profile-dropdown-content div {
+        color: var(--text-color); padding: 8px 12px; text-decoration: none; display: block; font-size: 0.9rem;
+    }
+    .profile-dropdown-content p { font-size: 0.8rem; color: #ccc; }
+    .profile-dropdown-content .divider { height: 1px; background-color: #555; margin: 8px 0; }
+    .profile-dropdown-content a:hover { background-color: var(--main-color); color: var(--text-color); }
+    .profile-dropdown:hover .profile-dropdown-content { display: block; }
+    .profile-icon { cursor: pointer; }
+
+
     /* About Page Specific Styles */
     .about-main {
       padding-top: 6rem;
       background-color: #111;
       min-height: 100vh;
+       color: var(--text-color);
     }
     
     .about-container {
@@ -197,138 +218,156 @@
   </style>
 </head>
 <body class="bg-gray-100">
-  <header id="main-header">
-    <div class="nav container">
-      <i class='bx bx-menu' id="menu-icon"></i>
-      <a href="homepage.html" class="logo">Car<span>Luck</span></a>
-      <ul class="navbar">
-        <li><a href="/">Home</a></li>
+    <header id="main-header">
+         <div class="nav container">
+            <i class='bx bx-menu' id="menu-icon"></i>
+            <a href="/" class="logo">Car<span>Luck</span></a>
+            <ul class="navbar">
+                <li><a href="/">Home</a></li>
                 <li><a href="/vehicles">Vehicles</a></li>
                 <li><a href="/Parts">Parts</a></li>
-                <li><a href="/about">About</a></li>
+                <li><a href="/about" class="active">About</a></li>
                 <li><a href="/contact">Contact</a></li>
                 <li><a href="/favorites">Favorites</a></li>
-      </ul>
-      <div class="nav-icons">
-        <i class='bx bx-search' id="search-icon"></i>
-        <div id="profile-section"></div>
-      </div>
-    </div>
-    <div class="search-box container">
-      <input type="search" name="" placeholder="Search...">
-    </div>
-  </header>
-
-  <main class="about-main">
-    <div class="about-container">
-      <div class="about-header">
-        <h1>About CarLuck</h1>
-        <p>Your trusted destination for premium cars and automotive excellence</p>
-      </div>
-      
-      <div class="about-content">
-        <div class="about-text">
-          <h2>Our Story</h2>
-          <p>Founded with a passion for automobiles, CarLuck has established itself as a premier destination for car enthusiasts. We combine industry expertise with genuine care for every customer's needs.</p>
-          <p>Our journey has been fueled by commitment to quality, transparency, and exceptional service in every interaction.</p>
-          
-          <h2>Why Choose Us</h2>
-          <ul class="values-list">
-            <li>
-              <span class="value-title">Rigorous Quality Standards</span>
-              Every vehicle undergoes comprehensive inspections to ensure peak performance
-            </li>
-            <li>
-              <span class="value-title">Transparent Transactions</span>
-              Honest pricing and straightforward deals with no hidden costs
-            </li>
-            <li>
-              <span class="value-title">Industry Expertise</span>
-              Decades of combined experience in the automotive field
-            </li>
-            <li>
-              <span class="value-title">Customer Commitment</span>
-              Your satisfaction drives everything we do
-            </li>
-          </ul>
+            </ul>
+            <div class="nav-icons">
+                <i class='bx bx-search' id="search-icon"></i>
+                <div id="profile-section"></div>
+            </div>
         </div>
+        <div class="search-box container">
+            <input type="search" placeholder="Search...">
+        </div>
+    </header>
+
+  <script>
+    let lastScrollTop = 0;
+    const header = document.getElementById("main-header");
+
+    window.addEventListener("scroll", function() {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrollTop > lastScrollTop) {
+            // Scrolling down
+            header.style.top = "-100px";
+        } else {
+            // Scrolling up
+            header.style.top = "0";
+        }
+
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    });
+    </script>
+
+<main class="about-main">
+  <div class="about-container">
+    <div class="about-header">
+      <h1>About CarLuck</h1>
+      <p>Your trusted destination for premium cars and automotive excellence</p>
+    </div>
+    
+    <div class="about-content">
+      <div class="about-text">
+        <h2>Our Story</h2>
+        <p>Founded with a passion for automobiles, CarLuck has established itself as a premier destination for car enthusiasts. We combine industry expertise with genuine care for every customer's needs.</p>
+        <p>Our journey has been fueled by commitment to quality, transparency, and exceptional service in every interaction.</p>
         
-        <div class="about-image">
-          <!-- BMW M3 background image from homepage now appears here -->
-        </div>
+        <h2>Why Choose Us</h2>
+        <ul class="values-list">
+          <li>
+            <span class="value-title">Rigorous Quality Standards</span>
+            Every vehicle undergoes comprehensive inspections to ensure peak performance
+          </li>
+          <li>
+            <span class="value-title">Transparent Transactions</span>
+            Honest pricing and straightforward deals with no hidden costs
+          </li>
+          <li>
+            <span class="value-title">Industry Expertise</span>
+            Decades of combined experience in the automotive field
+          </li>
+          <li>
+            <span class="value-title">Customer Commitment</span>
+            Your satisfaction drives everything we do
+          </li>
+        </ul>
       </div>
       
-      <div class="team-section">
-        <h2>Leadership Team</h2>
-        <div class="team-grid">
-          <div class="team-member">
-            <div class="initial-circle">SH</div>
-            <h3>Hossam Khaled</h3>
-            <p>Team Leader</p>
-            <p>"Building automotive dreams into reality"</p>
-          </div>
-          <div class="team-member">
-            <div class="initial-circle">HK</div>
-            <h3>Tariq Mohammed</h3>
-            <p>Team Member</p>
-            <p>"Precision in every detail"</p>
-          </div>
-          <div class="team-member">
-            <div class="initial-circle">SM</div>
-            <h3>Saif Hosni</h3>
-            <p>Team member</p>
-            <p>"Connecting you with your perfect vehicle"</p>
-          </div>
-          <div class="team-member">
-            <div class="initial-circle">TM</div>
-            <h3>Seif Hassan</h3>
-            <p>Team member</p>
-            <p>"Your satisfaction is our success"</p>
-          </div>
+      <div class="about-image"></div>
+    </div>
+    
+    <div class="team-section">
+      <h2>Leadership Team</h2>
+      <div class="team-grid">
+        <div class="team-member">
+          <div class="initial-circle">SH</div>
+          <h3>Seif Hassan</h3>
+          <p>Founder & CEO</p>
+          <p>"Building automotive dreams into reality"</p>
+        </div>
+        <div class="team-member">
+          <div class="initial-circle">HK</div>
+          <h3>Hossam Khaled</h3>
+          <p>Operations Director</p>
+          <p>"Precision in every detail"</p>
+        </div>
+        <div class="team-member">
+          <div class="initial-circle">SM</div>
+          <h3>Seif Mohamed</h3>
+          <p>Sales Manager</p>
+          <p>"Connecting you with your perfect vehicle"</p>
+        </div>
+        <div class="team-member">
+          <div class="initial-circle">TM</div>
+          <h3>Tarek Mohamed</h3>
+          <p>Customer Relations</p>
+          <p>"Your satisfaction is our success"</p>
         </div>
       </div>
     </div>
-  </main>
+  </div>
+</main>
 
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-section logo-section">
-        <h2 class="footer-logo">Car<span>Luck</span></h2>
-        <p>Your trusted destination for premium cars and parts.</p>
-      </div>
-      <div class="footer-section">
-        <h3>Company</h3>
-        <ul>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h3>Support</h3>
-        <ul>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="#">FAQs</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h3>Contact Us</h3>
-        <p>Email: support@carluck.com</p>
-        <p>Phone: +1 (555) 123-4567</p>
-        <p>Location: 123 Auto Drive, Motor City</p>
-      </div>
-      <div class="footer-social">
-        <a href="#"><i class='bx bxl-facebook'></i></a>
-        <a href="#"><i class='bx bxl-instagram'></i></a>
-        <a href="#"><i class='bx bxl-twitter'></i></a>
-        <a href="#"><i class='bx bxl-linkedin'></i></a>
-      </div>
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-section logo-section">
+      <h2 class="footer-logo">Car<span>Luck</span></h2>
+      <p>Your trusted destination for premium cars and parts.</p>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 CarLuck. All rights reserved.</p>
+    <div class="footer-section">
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
     </div>
-  </footer>
+    <div class="footer-section">
+      <h3>Support</h3>
+      <ul>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="#">FAQs</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Contact Us</h3>
+      <p>Email: support@carluck.com</p>
+      <p>Phone: +1 (555) 123-4567</p>
+      <p>Location: 123 Auto Drive, Motor City</p>
+    </div>
+    <div class="footer-social">
+      <a href="#"><i class='bx bxl-facebook'></i></a>
+      <a href="#"><i class='bx bxl-instagram'></i></a>
+      <a href="#"><i class='bx bxl-twitter'></i></a>
+      <a href="#"><i class='bx bxl-linkedin'></i></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 CarLuck. All rights reserved.</p>
+  </div>
+</footer>
 
-  <script src="../js/homepage.js"></script>
+<script src="/js/homepage.js"></script>
+<script src="/js/profile.js"></script>
 </body>
 </html>
