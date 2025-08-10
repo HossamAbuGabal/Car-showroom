@@ -1,13 +1,12 @@
-@ -0,0 +1,341 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact Us - CarLuck</title>
-  <link rel="stylesheet" href="../css/homepage.css" />
+  <link rel="stylesheet" href="/css/homepage.css" />
   <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-  <style>
+<style>
     /* Contact Page Specific Styles */
     .contact-main {
       padding-top: 6rem;
@@ -204,29 +203,48 @@
   </style>
 </head>
 <body class="bg-gray-100">
-  <header id="main-header">
-    <div class="nav container">
-      <i class='bx bx-menu' id="menu-icon"></i>
-      <a href="homepage.html" class="logo">Car<span>Luck</span></a>
-      <ul class="navbar">
-        <li><a href="/">Home</a></li>
+    <header id="main-header">
+         <div class="nav container">
+            <i class='bx bx-menu' id="menu-icon"></i>
+            <a href="/" class="logo">Car<span>Luck</span></a>
+            <ul class="navbar">
+                <li><a href="/">Home</a></li>
                 <li><a href="/vehicles">Vehicles</a></li>
                 <li><a href="/Parts">Parts</a></li>
                 <li><a href="/about">About</a></li>
-                <li><a href="/contact">Contact</a></li>
+                <li><a href="/contact" class="active">Contact</a></li>
                 <li><a href="/favorites">Favorites</a></li>
-      </ul>
-      <div class="nav-icons">
-        <i class='bx bx-search' id="search-icon"></i>
-        <div id="profile-section"></div>
-      </div>
-    </div>
-    <div class="search-box container">
-      <input type="search" name="" placeholder="Search...">
-    </div>
-  </header>
+            </ul>
+            <div class="nav-icons">
+                <i class='bx bx-search' id="search-icon"></i>
+                <div id="profile-section"></div>
+            </div>
+        </div>
+        <div class="search-box container">
+            <input type="search" placeholder="Search...">
+        </div>
+    </header>
 
-  <main class="contact-main">
+    <script>
+    let lastScrollTop = 0;
+    const header = document.getElementById("main-header");
+
+    window.addEventListener("scroll", function() {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrollTop > lastScrollTop) {
+            // Scrolling down
+            header.style.top = "-100px";
+        } else {
+            // Scrolling up
+            header.style.top = "0";
+        }
+
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    });
+    </script>
+
+<main class="contact-main">
     <div class="contact-container">
       <div class="contact-header">
         <h1>Contact CarLuck</h1>
@@ -299,45 +317,47 @@
     </div>
   </main>
 
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-section logo-section">
-        <h2 class="footer-logo">Car<span>Luck</span></h2>
-        <p>Your trusted destination for premium cars and parts.</p>
-      </div>
-      <div class="footer-section">
-        <h3>Company</h3>
-        <ul>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h3>Support</h3>
-        <ul>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="#">FAQs</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h3>Contact Us</h3>
-        <p>Email: support@carluck.com</p>
-        <p>Phone: +1 (555) 123-4567</p>
-        <p>Location: 123 Auto Drive, Motor City</p>
-      </div>
-      <div class="footer-social">
-        <a href="#"><i class='bx bxl-facebook'></i></a>
-        <a href="#"><i class='bx bxl-instagram'></i></a>
-        <a href="#"><i class='bx bxl-twitter'></i></a>
-        <a href="#"><i class='bx bxl-linkedin'></i></a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 CarLuck. All rights reserved.</p>
-    </div>
-  </footer>
 
-  <script src="../js/homepage.js"></script>
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-section logo-section">
+      <h2 class="footer-logo">Car<span>Luck</span></h2>
+      <p>Your trusted destination for premium cars and parts.</p>
+    </div>
+    <div class="footer-section">
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Support</h3>
+      <ul>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="#">FAQs</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Contact Us</h3>
+      <p>Email: support@carluck.com</p>
+      <p>Phone: +1 (555) 123-4567</p>
+      <p>Location: 123 Auto Drive, Motor City</p>
+    </div>
+    <div class="footer-social">
+      <a href="#"><i class='bx bxl-facebook'></i></a>
+      <a href="#"><i class='bx bxl-instagram'></i></a>
+      <a href="#"><i class='bx bxl-twitter'></i></a>
+      <a href="#"><i class='bx bxl-linkedin'></i></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 CarLuck. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="/js/homepage.js"></script>
+<script src="/js/profile.js"></script>
 </body>
 </html>
